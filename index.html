@@ -3,402 +3,1508 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ogez Website Countdown</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="templatemo-605-xmas-countdown.css">
-<!--
-
-TemplateMo 605 Xmas Countdown
-
-https://templatemo.com/tm-605-xmas-countdown
-
--->
+    <title>Bishop Ogez High School - Bushenyi | Premier Education Institution</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Animate on Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1a365d;
+            --secondary-gold: #d4af37;
+            --accent-green: #2e8b57;
+            --light-bg: #f8f9fa;
+            --dark-text: #2d3748;
+            --light-text: #718096;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        
+        /* Enhanced Navigation */
+        .navbar {
+            background-color: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .navbar.scrolled {
+            padding: 12px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--primary-blue) !important;
+            display: flex;
+            align-items: center;
+        }
+        
+        .school-logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            color: var(--primary-blue) !important;
+            margin: 0 8px;
+            padding: 8px 16px !important;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(26, 54, 93, 0.05);
+            color: var(--secondary-gold) !important;
+        }
+        
+        .nav-cta {
+            background-color: var(--secondary-gold);
+            color: white !important;
+            padding: 10px 24px !important;
+            border-radius: 8px;
+            margin-left: 10px;
+        }
+        
+        .nav-cta:hover {
+            background-color: #b8941f;
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Premium Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(26, 54, 93, 0.85), rgba(26, 54, 93, 0.9)), url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 200px 0 150px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-title {
+            font-size: 3.8rem;
+            margin-bottom: 25px;
+            color: white;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            opacity: 0.9;
+        }
+        
+        .btn-primary-gold {
+            background-color: var(--secondary-gold);
+            border: none;
+            color: white;
+            padding: 16px 36px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-primary-gold:hover {
+            background-color: #b8941f;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn-outline-light {
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            background: transparent;
+            color: white;
+            padding: 16px 36px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            margin-left: 15px;
+        }
+        
+        .btn-outline-light:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateY(-5px);
+            border-color: white;
+        }
+        
+        .hero-stats {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--secondary-gold);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Section Styles */
+        .section-padding {
+            padding: 120px 0;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 60px;
+            text-align: center;
+            font-size: 2.8rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--secondary-gold);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            color: var(--light-text);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+        
+        /* About Section */
+        .about-section {
+            background-color: var(--white);
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            border-top: 5px solid var(--secondary-gold);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+        
+        /* News Section */
+        .news-section {
+            background-color: var(--light-bg);
+        }
+        
+        .news-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .news-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .news-content {
+            padding: 30px;
+        }
+        
+        .news-date {
+            color: var(--secondary-gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            background-color: var(--white);
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 280px;
+            margin-bottom: 25px;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(26, 54, 93, 0.8), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+        
+        /* Results Section */
+        .results-section {
+            background-color: var(--light-bg);
+        }
+        
+        .results-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            height: 100%;
+        }
+        
+        .progress-container {
+            margin-bottom: 25px;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .progress-bar-custom {
+            height: 10px;
+            border-radius: 5px;
+            background-color: #e2e8f0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-green), var(--primary-blue));
+            border-radius: 5px;
+        }
+        
+        /* Events Section */
+        .events-section {
+            background-color: var(--white);
+        }
+        
+        .event-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .event-timeline:before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--secondary-gold);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 50px;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 64px;
+            height: 64px;
+            background-color: var(--secondary-gold);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .timeline-date .month {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        
+        .timeline-date .day {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        /* Admissions Section */
+        .admissions-section {
+            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.95)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+        }
+        
+        .admissions-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            color: var(--dark-text);
+        }
+        
+        .form-control {
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+        
+        /* Resources Page */
+        .resources-section {
+            padding: 150px 0 100px;
+            background-color: var(--light-bg);
+        }
+        
+        .resources-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .resource-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            margin-bottom: 30px;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .resource-icon {
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .resource-content {
+            padding: 30px;
+        }
+        
+        .resource-meta {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .btn-resource {
+            background-color: transparent;
+            border: 2px solid var(--secondary-gold);
+            color: var(--secondary-gold);
+            padding: 10px 25px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: 15px;
+            display: inline-block;
+        }
+        
+        .btn-resource:hover {
+            background-color: var(--secondary-gold);
+            color: white;
+        }
+        
+        .magazine-preview {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-top: 60px;
+        }
+        
+        .magazine-cover {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            margin: 0 auto 30px;
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo .school-logo {
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        
+        .footer-links h5 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-gold);
+            transform: translateX(5px);
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 42px;
+            height: 42px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 42px;
+            margin-right: 10px;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--secondary-gold);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            margin-top: 60px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Floating Button */
+        .floating-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--secondary-gold), #e6c158);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        .floating-button:hover {
+            transform: scale(1.1) rotate(10deg);
+            color: white;
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.6);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.4rem;
+            }
+            
+            .hero-stats {
+                padding: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-padding {
+                padding: 80px 0;
+            }
+            
+            .btn-primary-gold, .btn-outline-light {
+                padding: 14px 28px;
+                font-size: 1rem;
+                display: block;
+                width: 100%;
+                margin-bottom: 15px;
+                margin-left: 0;
+            }
+            
+            .nav-cta {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Background -->
-    <div class="grid-bg"></div>
-    <div class="particles" id="particles"></div>
-
-    <!-- Header -->
-    <header id="header">
-        <a href="#hero" class="logo">
-            <div class="logo-icon"></div>
-            <span class="logo-text">Ogez Website <span>Countdown</span></span>
-        </a>
-        <nav id="nav">
-            <a href="#hero">Home</a>
-            <a href="#about">About</a>
-            <a href="#events">News</a>
-            <a href="#traditions">Gallery</a>
-            <a href="#newsletter" class="nav-cta">Academics</a>
-        </nav>
-        <div class="nav-toggle" id="navToggle">
-            <span></span>
-            <span></span>
-            <span></span>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="school-logo">B</div>
+                Bishop Ogez High
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#news">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#results">Results</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#events">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resources">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-cta" href="#admissions">Apply Now</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-badge">
-            <span class="dot"></span>
-            Live Countdown Active
-        </div>
-        <h1>B.Ogez<br><span class="gradient">High School</span></h1>
-        <p class="hero-subtitle">Every second brings us closer to the most magical project of the year</p>
-        
-        <div class="countdown-wrapper">
-            <div class="countdown" id="countdown">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="days">00</span>
-                    <span class="countdown-label">Days</span>
-                </div>
-                <span class="countdown-colon">:</span>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours">00</span>
-                    <span class="countdown-label">Hours</span>
-                </div>
-                <span class="countdown-colon">:</span>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">00</span>
-                    <span class="countdown-label">Minutes</span>
-                </div>
-                <span class="countdown-colon">:</span>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds">00</span>
-                    <span class="countdown-label">Seconds</span>
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
+                    <h1 class="hero-title">Excellence in Education Since 1985</h1>
+                    <p class="hero-subtitle">Bishop Ogez High School is a premier institution in Bushenyi dedicated to nurturing future leaders through academic excellence, character development, and holistic education.</p>
+                    <div class="mt-5">
+                        <a href="#admissions" class="btn btn-primary-gold"><i class="fas fa-user-graduate me-2"></i>Apply for Admissions</a>
+                        <a href="#about" class="btn btn-outline-light"><i class="fas fa-play-circle me-2"></i>Virtual Tour</a>
+                    </div>
+                    
+                    <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
+                        <div class="row">
+                            <div class="col-md-3 col-6">
+                                <div class="stat-item">
+                                    <div class="stat-number" data-count="98">0</div>
+                                    <div class="stat-label">Pass Rate</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="stat-item">
+                                    <div class="stat-number" data-count="42">0</div>
+                                    <div class="stat-label">Expert Staff</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="stat-item">
+                                    <div class="stat-number" data-count="35">0</div>
+                                    <div class="stat-label">Years Experience</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="stat-item">
+                                    <div class="stat-number" data-count="1200">0</div>
+                                    <div class="stat-label">Students</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="target-date">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-                February 20, 2026 at 4:00 PM
-            </div>
-        </div>
-
-        <div class="scroll-indicator">
-            <span>Scroll</span>
-            <div class="line"></div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
-        <div class="section-header">
-            <span class="section-tag">About Us</span>
-            <h2 class="section-title">The Spirit of the School</h2>
-            <p class="section-subtitle">Celebrating academics, sports, religion together</p>
-        </div>
-        <div class="about-grid">
-            <div class="about-image">
-                <div class="about-image-stack">
-                    <div class="about-img-item img-1">
-                        <img src="images/christmas-pic-21.jpg" alt="Christmas Tree">
+    <section id="about" class="about-section section-padding">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-10 mx-auto text-center">
+                    <h2 class="section-title">Why Choose Bishop Ogez?</h2>
+                    <p class="section-subtitle">We provide a transformative educational experience that prepares students for success in university and beyond.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Academic Excellence</h4>
+                        <p>Our rigorous curriculum, experienced faculty, and modern facilities ensure students achieve their highest potential.</p>
+                        <ul class="mt-3">
+                            <li>STEM-focused programs</li>
+                            <li>Advanced placement courses</li>
+                            <li>University preparation</li>
+                        </ul>
                     </div>
-                    <div class="about-img-item img-2">
-                        <img src="images/christmas-pic-22.jpg" alt="Christmas Lights">
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Holistic Development</h4>
+                        <p>We nurture the complete individual through sports, arts, leadership programs, and community service initiatives.</p>
+                        <ul class="mt-3">
+                            <li>20+ clubs & societies</li>
+                            <li>Sports & athletics</li>
+                            <li>Arts & cultural programs</li>
+                        </ul>
                     </div>
-                    <div class="about-img-item img-3">
-                        <img src="images/christmas-pic-23.jpg" alt="Christmas Ornaments">
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>Character & Values</h4>
+                        <p>Rooted in Christian values, we foster integrity, respect, and responsibility in every student.</p>
+                        <ul class="mt-3">
+                            <li>Moral education</li>
+                            <li>Community service</li>
+                            <li>Ethical leadership</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="about-content">
-                <h3>Admissions are <span> Now Open</span>.</h3>
-                <p>A robust, ground breaking school, founded in 1970, with both O & A'level, built on the catholic foundation.</p>
-                <p>Give your child the best education from Bishop Ogez High School.</p>
-                <div class="about-features">
-                    <div class="about-feature">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                         High Academic Perfomance
-                    </div>
-                    <div class="about-feature">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        Religion
-                    </div>
-                    <div class="about-feature">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        Discipline 
-                    </div>
-                    <div class="about-feature">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        Hands on Skills 
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="news-section section-padding">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-10 mx-auto text-center">
+                    <h2 class="section-title">Latest News & Announcements</h2>
+                    <p class="section-subtitle">Stay updated with the latest happenings at Bishop Ogez High School</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Science Lab" class="news-img">
+                        <div class="news-content">
+                            <span class="news-date"><i class="far fa-calendar me-2"></i>May 15, 2026</span>
+                            <h4>New Science Laboratory Complex</h4>
+                            <p>The school has inaugurated a state-of-the-art science laboratory with modern equipment for physics, chemistry, and biology.</p>
+                            <a href="#" class="btn-resource">Read More</a>
+                        </div>
                     </div>
                 </div>
-                <div class="about-templatemo">
-                    <p>Get the fastest updates from our school at the <strong>Comfort</strong> — of your sofa, right here at our official school website.</p>
-                    <a href="https://techlinkuganda.tech" target="_blank" class="btn-templatemo">
-                        <span>Visit News Section</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                        </svg>
-                    </a>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Sports" class="news-img">
+                        <div class="news-content">
+                            <span class="news-date"><i class="far fa-calendar me-2"></i>April 28, 2026</span>
+                            <h4>Regional Football Champions</h4>
+                            <p>Our school football team emerged victorious in the Bushenyi Regional Secondary Schools Championship, securing a place in nationals.</p>
+                            <a href="#" class="btn-resource">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Graduation" class="news-img">
+                        <div class="news-content">
+                            <span class="news-date"><i class="far fa-calendar me-2"></i>April 10, 2026</span>
+                            <h4>2026 Admissions Now Open</h4>
+                            <p>Admissions for S.1, S.3, and S.5 for the 2026 academic year are now open. Entrance exams scheduled for June 2026.</p>
+                            <a href="#admissions" class="btn-resource">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section section-padding">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-10 mx-auto text-center">
+                    <h2 class="section-title">Campus Life Gallery</h2>
+                    <p class="section-subtitle">Experience the vibrant campus life at Bishop Ogez High School</p>
+                </div>
+            </div>
+            
+            <div class="row g-3">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Campus" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h5 class="text-white">Main Campus</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Library" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h5 class="text-white">School Library</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Sports" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h5 class="text-white">Sports Day</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Classroom" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h5 class="text-white">Modern Classroom</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Laboratory" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h5 class="text-white">Science Lab</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Dormitory" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h5 class="text-white">Student Dormitories</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="results-section section-padding">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-10 mx-auto text-center">
+                    <h2 class="section-title">UNEB Examination Performance</h2>
+                    <p class="section-subtitle">Consistent outstanding performance in national examinations</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto" data-aos="fade-up">
+                    <div class="results-card">
+                        <h3 class="text-center mb-5">2022 UNEB Results Breakdown</h3>
+                        
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>Division 1</span>
+                                <span>45%</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>Division 2</span>
+                                <span>40%</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 40%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>Division 3</span>
+                                <span>13%</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 13%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>Division 4</span>
+                                <span>2%</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 2%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-5 pt-4">
+                            <h4 class="mb-3">Overall Pass Rate: 98%</h4>
+                            <p class="text-muted">Our students consistently perform above the national average, with many qualifying for prestigious universities both locally and internationally.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Events Section -->
-    <section class="events" id="events">
-        <div class="section-header">
-            <span class="section-tag">Upcoming</span>
-            <h2 class="section-title">School Events</h2>
-            <p class="section-subtitle">Mark your calendar for these special celebrations</p>
-        </div>
-        <div class="events-grid">
-            <div class="event-card">
-                <div class="event-image">
-                    <img src="images/christmas-pic-31.jpg" alt="Carol Night">
-                    <div class="event-date-badge">
-                        <div class="day">10</div>
-                        <div class="month">Feb</div>
-                    </div>
-                </div>
-                <div class="event-content">
-                    <h3>School Reporting</h3>
-                    <p>The school officially opens up with the beginning of the new term, receiving all students</p>
-                    <div class="event-meta">
-                        <span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            9:00 AM
-                        </span>
-                        <span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                            School Gate
-                        </span>
-                    </div>
+    <section id="events" class="events-section section-padding">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-10 mx-auto text-center">
+                    <h2 class="section-title">Upcoming School Events</h2>
+                    <p class="section-subtitle">Mark your calendar for important school events and activities</p>
                 </div>
             </div>
-            <div class="event-card">
-                <div class="event-image">
-                    <img src="images/christmas-pic-32.jpg" alt="Cookie Exchange">
-                    <div class="event-date-badge">
+            
+            <div class="event-timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-date">
+                        <div class="month">June</div>
                         <div class="day">20</div>
-                        <div class="month">March</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>Annual Parents' Day</h4>
+                        <p class="text-muted mb-2">9:00 AM - 2:00 PM | School Auditorium</p>
+                        <p>Parents are invited to meet teachers, discuss student progress, and tour the newly upgraded school facilities.</p>
                     </div>
                 </div>
-                <div class="event-content">
-                    <h3>Schools' Day</h3>
-                    <p>Celebration of the fantastic school's day in celebration of 45 years of existence</p>
-                    <div class="event-meta">
-                        <span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            10:00 AM
-                        </span>
-                        <span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                            Main Hall
-                        </span>
+                
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+                    <div class="timeline-date">
+                        <div class="month">July</div>
+                        <div class="day">05</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>Cultural Day Festival</h4>
+                        <p class="text-muted mb-2">8:00 AM - 5:00 PM | School Grounds</p>
+                        <p>Experience Uganda's rich cultural diversity through traditional dances, food, music, and costumes presented by students.</p>
                     </div>
                 </div>
-            </div>
-            <div class="event-card">
-                <div class="event-image">
-                    <img src="images/christmas-pic-33.jpg" alt="Candlelight Vigil">
-                    <div class="event-date-badge">
-                        <div class="day">1</div>
-                        <div class="month">April</div>
+                
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
+                    <div class="timeline-date">
+                        <div class="month">Aug</div>
+                        <div class="day">15</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>Science Fair Exhibition</h4>
+                        <p class="text-muted mb-2">August 15-17 | Science Block</p>
+                        <p>Annual science fair showcasing innovative projects from students. Open to the public and neighboring schools.</p>
                     </div>
                 </div>
-                <div class="event-content">
-                    <h3>Visitation Day</h3>
-                    <p>Coming to check on your child's academic performance, health and encourage them more too.</p>
-                    <div class="event-meta">
-                        <span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            9:00 AM
-                        </span>
-                        <span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                            Main hall
-                        </span>
+                
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+                    <div class="timeline-date">
+                        <div class="month">Jan</div>
+                        <div class="day">29</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>2024 Academic Year Begins</h4>
+                        <p class="text-muted mb-2">8:00 AM | School Campus</p>
+                        <p>First day of the 2026 academic year for all returning students. New S.1 students report on 10 Feb 26, 2026.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Traditions Section -->
-    <section class="traditions" id="traditions">
-        <div class="section-header">
-            <span class="section-tag">Cherished</span>
-            <h2 class="section-title">School Days</h2>
-            <p class="section-subtitle">The timeless rituals that make Christmas special</p>
-        </div>
-        <div class="traditions-grid">
-            <div class="tradition-card">
-                <div class="tradition-image">
-                    <img src="images/christmas-pic-41.jpg" alt="Decorating Tree">
+    <!-- Resources Section -->
+    <section id="resources" class="resources-section">
+        <div class="container">
+            <div class="resources-header">
+                <h1 class="mb-4">School Resources & Publications</h1>
+                <p class="lead">Access our digital library, school magazine, academic resources, and more</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="resource-content">
+                            <h4>School Magazine</h4>
+                            <div class="resource-meta">Quarterly Publication</div>
+                            <p>Read our latest school magazine featuring student articles, interviews, creative writing, and school news.</p>
+                            <a href="#" class="btn-resource">Read Latest Issue</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="tradition-content">
-                    <div class="tradition-number">01</div>
-                    <h3>Bishop Ogez Day</h3>
-                    <p>Celebration of our school idol. A day dedicated to celebrating yet another year of our school</p>
-                    <a href="#" class="tradition-btn">
-                        <span>Learn More</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div class="resource-content">
+                            <h4>Academic Resources</h4>
+                            <div class="resource-meta">Study Materials & Past Papers</div>
+                            <p>Access past UNEB papers, study guides, syllabi, and other academic resources for students.</p>
+                            <a href="#" class="btn-resource">Download Resources</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="resource-content">
+                            <h4>School Newsletter</h4>
+                            <div class="resource-meta">Monthly Updates</div>
+                            <p>Subscribe to our monthly newsletter for updates on school events, achievements, and important announcements.</p>
+                            <a href="#" class="btn-resource">Subscribe Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="resource-content">
+                            <h4>Academic Calendar</h4>
+                            <div class="resource-meta">2026-2027 Schedule</div>
+                            <p>View and download the complete academic calendar including term dates, holidays, and examination schedules.</p>
+                            <a href="#" class="btn-resource">View Calendar</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="resource-content">
+                            <h4>School Prospectus</h4>
+                            <div class="resource-meta">Official School Document</div>
+                            <p>Download our detailed school prospectus containing information about programs, facilities, and admission procedures.</p>
+                            <a href="#" class="btn-resource">Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="resource-content">
+                            <h4>Virtual Tour</h4>
+                            <div class="resource-meta">Interactive Campus Tour</div>
+                            <p>Take a virtual tour of our campus facilities including classrooms, laboratories, library, and sports facilities.</p>
+                            <a href="#" class="btn-resource">Start Tour</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="tradition-card">
-                <div class="tradition-image">
-                    <img src="images/christmas-pic-42.jpg" alt="Gift Exchange">
-                </div>
-                <div class="tradition-content">
-                    <div class="tradition-number">02</div>
-                    <h3>Secret Gift Exchange</h3>
-                    <p>Finding the perfect gift for someone special, wrapped with love and anticipation.</p>
-                    <a href="#" class="tradition-btn">
-                        <span>Learn More</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="tradition-card">
-                <div class="tradition-image">
-                    <img src="images/christmas-pic-43.jpg" alt="Hot Cocoa">
-                </div>
-                <div class="tradition-content">
-                    <div class="tradition-number">03</div>
-                    <h3>Hot Cocoa Nights</h3>
-                    <p>Gathering by the fire with warm mugs, sharing stories as snow falls softly outside.</p>
-                    <a href="#" class="tradition-btn">
-                        <span>Learn More</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="tradition-card">
-                <div class="tradition-image">
-                    <img src="images/christmas-pic-44.jpg" alt="Christmas Feast">
-                </div>
-                <div class="tradition-content">
-                    <div class="tradition-number">04</div>
-                    <h3>Christmas Feast</h3>
-                    <p>Gathering around the table with family for a special meal and cherished conversations.</p>
-                    <a href="#" class="tradition-btn">
-                        <span>Learn More</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
+            
+            <!-- Magazine Preview -->
+            <div class="magazine-preview" data-aos="fade-up">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-center">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Magazine Cover" class="magazine-cover">
+                    </div>
+                    <div class="col-lg-8">
+                        <h3 class="mb-3">The Ogez Chronicle - Spring 2025 Edition</h3>
+                        <p class="mb-4">Our latest school magazine features award-winning student essays, interviews with alumni, highlights from the science fair, and a special feature on our new laboratory complex.</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="mb-4">
+                                    <li>Exclusive interview with Headteacher</li>
+                                    <li>Student creative writing showcase</li>
+                                    <li>Sports achievements highlights</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="mb-4">
+                                    <li>Science & technology features</li>
+                                    <li>Alumni success stories</li>
+                                    <li>Upcoming events calendar</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary-gold me-3"><i class="fas fa-book-open me-2"></i>Read Online</a>
+                        <a href="#" class="btn-resource"><i class="fas fa-download me-2"></i>Download PDF</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter" id="newsletter">
-        <div class="newsletter-container">
-            <div class="section-header" style="margin-bottom: 40px;">
-                <span class="section-tag">Stay Updated</span>
-                <h2 class="section-title">Join Bishop Ogez</h2>
+    <!-- Admissions Section -->
+    <section id="admissions" class="admissions-section section-padding">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-10 mx-auto text-center">
+                    <h2 class="section-title" style="color: white;">Admissions for 2026 Academic Year</h2>
+                    <p class="lead mb-5" style="color: rgba(255, 255, 255, 0.9);">Join the Bishop Ogez High School family. Limited spaces available for S.1, S.3, and S.5.</p>
+                </div>
             </div>
-            <p>Subscribe to receive schoool updates, event reminders, and get your child the perfect education they deserve.</p>
-            <form class="newsletter-form" id="newsletterForm">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit">Subscribe</button>
-            </form>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="admissions-card" data-aos="fade-up">
+                        <h3 class="text-center mb-5">Admission Inquiry Form</h3>
+                        <form id="admissionForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Student's Full Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Parent/Guardian Name" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Email Address" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" placeholder="Phone Number" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <select class="form-control" required>
+                                        <option value="">Select Class Applying For</option>
+                                        <option value="S1">Senior 1 (S.1)</option>
+                                        <option value="S3">Senior 3 (S.3)</option>
+                                        <option value="S5">Senior 5 (S.5)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-control" required>
+                                        <option value="">Current School</option>
+                                        <option value="Primary">Primary School</option>
+                                        <option value="Secondary">Secondary School</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <textarea class="form-control" rows="4" placeholder="Additional Information or Questions"></textarea>
+                            
+                            <div class="text-center mt-5">
+                                <button type="submit" class="btn btn-primary-gold px-5">Submit Application</button>
+                            </div>
+                        </form>
+                        
+                        <div class="mt-5 pt-4 border-top text-center">
+                            <h5 class="mb-3">Admissions Process</h5>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <div class="feature-icon" style="width: 50px; height: 50px; margin: 0 auto 15px;">
+                                            <i class="fas fa-file-alt"></i>
+                                        </div>
+                                        <p>Submit Application</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <div class="feature-icon" style="width: 50px; height: 50px; margin: 0 auto 15px;">
+                                            <i class="fas fa-pen-alt"></i>
+                                        </div>
+                                        <p>Entrance Examination</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <div class="feature-icon" style="width: 50px; height: 50px; margin: 0 auto 15px;">
+                                            <i class="fas fa-handshake"></i>
+                                        </div>
+                                        <p>Interview & Admission</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="#hero" class="logo">
-                    <div class="logo-icon"></div>
-                    <span class="logo-text">Website<span>Countdown</span></span>
-                </a>
-                <p>Celebrating the magic of Being online with a live countdown, events, and traditions that bring us together.</p>
-                <div class="footer-social">
-                    <a href="#" title="Facebook">f</a>
-                    <a href="#" title="Instagram">◎</a>
-                    <a href="#" title="Twitter">𝕏</a>
-                    <a href="#" title="YouTube">▶</a>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5">
+                    <div class="footer-logo">
+                        <div class="school-logo">B</div>
+                        Bishop Ogez High
+                    </div>
+                    <p class="mb-4" style="color: rgba(255, 255, 255, 0.8);">Providing quality education since 1985. Shaping future leaders through academic excellence, moral values, and holistic development.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-5">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <a href="#home">Home</a>
+                        <a href="#about">About Us</a>
+                        <a href="#news">News</a>
+                        <a href="#gallery">Gallery</a>
+                        <a href="#results">Results</a>
+                        <a href="#events">Events</a>
+                        <a href="#resources">Resources</a>
+                        <a href="#admissions">Admissions</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 mb-5">
+                    <div class="footer-links">
+                        <h5>Resources</h5>
+                        <a href="#">School Magazine</a>
+                        <a href="#">Academic Calendar</a>
+                        <a href="#">Past Papers</a>
+                        <a href="#">School Prospectus</a>
+                        <a href="#">Virtual Tour</a>
+                        <a href="#">Newsletter</a>
+                        <a href="#">Parent Portal</a>
+                        <a href="#">Staff Directory</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 mb-5">
+                    <div class="footer-links">
+                        <h5>Contact Us</h5>
+                        <p><i class="fas fa-map-marker-alt me-2"></i> Bushenyi Town, Bushenyi District, Uganda</p>
+                        <p><i class="fas fa-phone me-2"></i> +256 772 123 456</p>
+                        <p><i class="fas fa-envelope me-2"></i> info@bishopogez.ac.ug</p>
+                        <p><i class="fas fa-clock me-2"></i> Mon-Fri, 8:00 AM - 5:00 PM</p>
+                    </div>
                 </div>
             </div>
-            <div class="footer-column">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="#traditions">Traditions</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="#">Gift Ideas</a></li>
-                    <li><a href="#">Holiday Recipes</a></li>
-                    <li><a href="#">Decoration Tips</a></li>
-                    <li><a href="#">Event Planning</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Contact</h4>
-                <ul>
-                    <li><a href="#">admin@bishopogez.ac.ug</a></li>
-                    <li><a href="#">Support</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 Website Countdown. Designed by <a rel="nofollow" href="https://techlinkuganda.tech" target="_blank">Gilbert Mwesigwa</a></p>
-            <div class="footer-legal">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Bishop Ogez High School, Bushenyi. All Rights Reserved.</p>
+                <p class="small mt-2">This professional website demonstrates the value of a strong online presence for school administration, communication, and student recruitment.</p>
             </div>
         </div>
     </footer>
+    
+    <!-- Floating Apply Now Button -->
+    <a href="#admissions" class="floating-button">
+        <i class="fas fa-user-graduate"></i>
+    </a>
 
-<script src="templatemo-605-countdown-scripts.js"></script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Animated counters
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-count');
+                    const count = +counter.innerText;
+                    
+                    const increment = target / speed;
+                    
+                    if(count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                // Start counting when element is in viewport
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCount();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(counter);
+            });
+            
+            // Form submission
+            const admissionForm = document.getElementById('admissionForm');
+            if(admissionForm) {
+                admissionForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Show success message
+                    const submitBtn = admissionForm.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    submitBtn.innerHTML = '<i class="fas fa-check me-2"></i>Application Submitted!';
+                    submitBtn.disabled = true;
+                    submitBtn.style.backgroundColor = '#2e8b57';
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.backgroundColor = '';
+                        admissionForm.reset();
+                        
+                        // Show success alert
+                        alert('Thank you for your application! Our admissions team will contact you within 48 hours.');
+                    }, 2000);
+                });
+            }
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active nav link
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // Update active nav link on scroll
+            const sections = document.querySelectorAll('section');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if(scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
