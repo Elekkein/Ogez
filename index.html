@@ -1,1510 +1,529 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bishop Ogez High School - Bushenyi | Premier Education Institution</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Animate on Scroll -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary-blue: #1a365d;
-            --secondary-gold: #d4af37;
-            --accent-green: #2e8b57;
-            --light-bg: #f8f9fa;
-            --dark-text: #2d3748;
-            --light-text: #718096;
-            --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--dark-text);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: var(--primary-blue);
-        }
-        
-        /* Enhanced Navigation */
-        .navbar {
-            background-color: var(--white);
-            padding: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-        }
-        
-        .navbar.scrolled {
-            padding: 12px 0;
-            background-color: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-        }
-        
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.8rem;
-            color: var(--primary-blue) !important;
-            display: flex;
-            align-items: center;
-        }
-        
-        .school-logo {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            margin-right: 12px;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-        
-        .nav-link {
-            font-weight: 600;
-            color: var(--primary-blue) !important;
-            margin: 0 8px;
-            padding: 8px 16px !important;
-            border-radius: 6px;
-            transition: var(--transition);
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            background-color: rgba(26, 54, 93, 0.05);
-            color: var(--secondary-gold) !important;
-        }
-        
-        .nav-cta {
-            background-color: var(--secondary-gold);
-            color: white !important;
-            padding: 10px 24px !important;
-            border-radius: 8px;
-            margin-left: 10px;
-        }
-        
-        .nav-cta:hover {
-            background-color: #b8941f;
-            color: white !important;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
-        }
-        
-        /* Premium Hero Section */
-        .hero-section {
-            background: linear-gradient(rgba(26, 54, 93, 0.85), rgba(26, 54, 93, 0.9)), url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            padding: 200px 0 150px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-title {
-            font-size: 3.8rem;
-            margin-bottom: 25px;
-            color: white;
-            line-height: 1.2;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            max-width: 800px;
-            opacity: 0.9;
-        }
-        
-        .btn-primary-gold {
-            background-color: var(--secondary-gold);
-            border: none;
-            color: white;
-            padding: 16px 36px;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: var(--transition);
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
-        }
-        
-        .btn-primary-gold:hover {
-            background-color: #b8941f;
-            color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.4);
-        }
-        
-        .btn-outline-light {
-            border: 2px solid rgba(255, 255, 255, 0.7);
-            background: transparent;
-            color: white;
-            padding: 16px 36px;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: var(--transition);
-            font-size: 1.1rem;
-            margin-left: 15px;
-        }
-        
-        .btn-outline-light:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            transform: translateY(-5px);
-            border-color: white;
-        }
-        
-        .hero-stats {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
-            margin-top: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .stat-item {
-            text-align: center;
-            padding: 0 20px;
-        }
-        
-        .stat-number {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: var(--secondary-gold);
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* Section Styles */
-        .section-padding {
-            padding: 120px 0;
-        }
-        
-        .section-title {
-            position: relative;
-            padding-bottom: 20px;
-            margin-bottom: 60px;
-            text-align: center;
-            font-size: 2.8rem;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background-color: var(--secondary-gold);
-            border-radius: 2px;
-        }
-        
-        .section-subtitle {
-            color: var(--light-text);
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 60px;
-            text-align: center;
-        }
-        
-        /* About Section */
-        .about-section {
-            background-color: var(--white);
-        }
-        
-        .feature-card {
-            background-color: var(--white);
-            border-radius: 15px;
-            padding: 40px 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            height: 100%;
-            border-top: 5px solid var(--secondary-gold);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-        }
-        
-        /* News Section */
-        .news-section {
-            background-color: var(--light-bg);
-        }
-        
-        .news-card {
-            background-color: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            height: 100%;
-        }
-        
-        .news-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
-        
-        .news-img {
-            height: 220px;
-            width: 100%;
-            object-fit: cover;
-        }
-        
-        .news-content {
-            padding: 30px;
-        }
-        
-        .news-date {
-            color: var(--secondary-gold);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            display: block;
-        }
-        
-        /* Gallery Section */
-        .gallery-section {
-            background-color: var(--white);
-        }
-        
-        .gallery-item {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            height: 280px;
-            margin-bottom: 25px;
-        }
-        
-        .gallery-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(26, 54, 93, 0.8), transparent);
-            display: flex;
-            align-items: flex-end;
-            padding: 25px;
-            opacity: 0;
-            transition: var(--transition);
-        }
-        
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-        
-        .gallery-item:hover .gallery-img {
-            transform: scale(1.1);
-        }
-        
-        /* Results Section */
-        .results-section {
-            background-color: var(--light-bg);
-        }
-        
-        .results-card {
-            background-color: var(--white);
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: var(--shadow);
-            height: 100%;
-        }
-        
-        .progress-container {
-            margin-bottom: 25px;
-        }
-        
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-        
-        .progress-bar-custom {
-            height: 10px;
-            border-radius: 5px;
-            background-color: #e2e8f0;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-green), var(--primary-blue));
-            border-radius: 5px;
-        }
-        
-        /* Events Section */
-        .events-section {
-            background-color: var(--white);
-        }
-        
-        .event-timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .event-timeline:before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background-color: var(--secondary-gold);
-            border-radius: 2px;
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding-left: 80px;
-            margin-bottom: 50px;
-        }
-        
-        .timeline-date {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 64px;
-            height: 64px;
-            background-color: var(--secondary-gold);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-        }
-        
-        .timeline-date .month {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-        }
-        
-        .timeline-date .day {
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-        
-        /* Admissions Section */
-        .admissions-section {
-            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.95)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            position: relative;
-        }
-        
-        .admissions-card {
-            background-color: var(--white);
-            border-radius: 20px;
-            padding: 50px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-            color: var(--dark-text);
-        }
-        
-        .form-control {
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-        
-        .form-control:focus {
-            border-color: var(--secondary-gold);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
-        }
-        
-        /* Resources Page */
-        .resources-section {
-            padding: 150px 0 100px;
-            background-color: var(--light-bg);
-        }
-        
-        .resources-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-        
-        .resource-card {
-            background-color: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            height: 100%;
-            margin-bottom: 30px;
-        }
-        
-        .resource-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
-        
-        .resource-icon {
-            height: 120px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-        
-        .resource-content {
-            padding: 30px;
-        }
-        
-        .resource-meta {
-            color: var(--light-text);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-        
-        .btn-resource {
-            background-color: transparent;
-            border: 2px solid var(--secondary-gold);
-            color: var(--secondary-gold);
-            padding: 10px 25px;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: var(--transition);
-            margin-top: 15px;
-            display: inline-block;
-        }
-        
-        .btn-resource:hover {
-            background-color: var(--secondary-gold);
-            color: white;
-        }
-        
-        .magazine-preview {
-            background-color: var(--white);
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: var(--shadow);
-            margin-top: 60px;
-        }
-        
-        .magazine-cover {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-            margin: 0 auto 30px;
-            display: block;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 80px 0 30px;
-        }
-        
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .footer-logo .school-logo {
-            width: 40px;
-            height: 40px;
-            font-size: 1.2rem;
-            margin-right: 10px;
-        }
-        
-        .footer-links h5 {
-            color: white;
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            font-weight: 600;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 12px;
-            transition: var(--transition);
-        }
-        
-        .footer-links a:hover {
-            color: var(--secondary-gold);
-            transform: translateX(5px);
-        }
-        
-        .social-icons a {
-            display: inline-block;
-            width: 42px;
-            height: 42px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 42px;
-            margin-right: 10px;
-            color: white;
-            transition: var(--transition);
-        }
-        
-        .social-icons a:hover {
-            background-color: var(--secondary-gold);
-            transform: translateY(-5px);
-        }
-        
-        .copyright {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            margin-top: 60px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-        
-        /* Floating Button */
-        .floating-button {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, var(--secondary-gold), #e6c158);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 60px;
-            font-size: 1.5rem;
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
-            z-index: 1000;
-            transition: var(--transition);
-        }
-        
-        .floating-button:hover {
-            transform: scale(1.1) rotate(10deg);
-            color: white;
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.6);
-        }
-        
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero-title {
-                font-size: 3rem;
-            }
-            
-            .section-title {
-                font-size: 2.4rem;
-            }
-            
-            .hero-stats {
-                padding: 20px;
-            }
-            
-            .stat-number {
-                font-size: 2.2rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .section-padding {
-                padding: 80px 0;
-            }
-            
-            .btn-primary-gold, .btn-outline-light {
-                padding: 14px 28px;
-                font-size: 1rem;
-                display: block;
-                width: 100%;
-                margin-bottom: 15px;
-                margin-left: 0;
-            }
-            
-            .nav-cta {
-                margin-left: 0;
-                margin-top: 10px;
-            }
-        }
-        
-        /* Animation classes */
-        .fade-in {
-            animation: fadeIn 1s ease forwards;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bishop Ogez High School — Excellence in Education | Bushenyi, Uganda</title>
+  <meta name="description" content="Bishop Ogez High School is a premier secondary school in Bushenyi, Uganda, offering quality education in Sciences, Arts, and Sports. Enroll today for a brighter future." />
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- AOS Animate on Scroll -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <div class="school-logo">B</div>
-                Bishop Ogez High
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#news">News</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#gallery">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#results">Results</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#events">Events</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#resources">Resources</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-cta" href="#admissions">Apply Now</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
-                    <h1 class="hero-title">Excellence in Education Since 1985</h1>
-                    <p class="hero-subtitle">Bishop Ogez High School is a premier institution in Bushenyi dedicated to nurturing future leaders through academic excellence, character development, and holistic education.</p>
-                    <div class="mt-5">
-                        <a href="#admissions" class="btn btn-primary-gold"><i class="fas fa-user-graduate me-2"></i>Apply for Admissions</a>
-                        <a href="#about" class="btn btn-outline-light"><i class="fas fa-play-circle me-2"></i>Virtual Tour</a>
-                    </div>
-                    
-                    <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
-                        <div class="row">
-                            <div class="col-md-3 col-6">
-                                <div class="stat-item">
-                                    <div class="stat-number" data-count="98">0</div>
-                                    <div class="stat-label">Pass Rate</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-6">
-                                <div class="stat-item">
-                                    <div class="stat-number" data-count="42">0</div>
-                                    <div class="stat-label">Expert Staff</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-6">
-                                <div class="stat-item">
-                                    <div class="stat-number" data-count="35">0</div>
-                                    <div class="stat-label">Years Experience</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-6">
-                                <div class="stat-item">
-                                    <div class="stat-number" data-count="1200">0</div>
-                                    <div class="stat-label">Students</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- ========== PRELOADER ========== -->
+  <div class="preloader" id="preloader">
+    <div class="spinner"></div>
+  </div>
 
-    <!-- About Section -->
-    <section id="about" class="about-section section-padding">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-lg-10 mx-auto text-center">
-                    <h2 class="section-title">Why Choose Bishop Ogez?</h2>
-                    <p class="section-subtitle">We provide a transformative educational experience that prepares students for success in university and beyond.</p>
-                </div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h4>Academic Excellence</h4>
-                        <p>Our rigorous curriculum, experienced faculty, and modern facilities ensure students achieve their highest potential.</p>
-                        <ul class="mt-3">
-                            <li>STEM-focused programs</li>
-                            <li>Advanced placement courses</li>
-                            <li>University preparation</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h4>Holistic Development</h4>
-                        <p>We nurture the complete individual through sports, arts, leadership programs, and community service initiatives.</p>
-                        <ul class="mt-3">
-                            <li>20+ clubs & societies</li>
-                            <li>Sports & athletics</li>
-                            <li>Arts & cultural programs</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h4>Character & Values</h4>
-                        <p>Rooted in Christian values, we foster integrity, respect, and responsibility in every student.</p>
-                        <ul class="mt-3">
-                            <li>Moral education</li>
-                            <li>Community service</li>
-                            <li>Ethical leadership</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="images/logo.png" alt="Bishop Ogez High School Logo" />
+        Bishop Ogez <span class="accent-text">High School</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-lg-center gap-1">
+          <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="academics.html">Academics</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Why Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-accent" href="#contact">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <!-- News Section -->
-    <section id="news" class="news-section section-padding">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-lg-10 mx-auto text-center">
-                    <h2 class="section-title">Latest News & Announcements</h2>
-                    <p class="section-subtitle">Stay updated with the latest happenings at Bishop Ogez High School</p>
-                </div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                    <div class="news-card">
-                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Science Lab" class="news-img">
-                        <div class="news-content">
-                            <span class="news-date"><i class="far fa-calendar me-2"></i>May 15, 2026</span>
-                            <h4>New Science Laboratory Complex</h4>
-                            <p>The school has inaugurated a state-of-the-art science laboratory with modern equipment for physics, chemistry, and biology.</p>
-                            <a href="#" class="btn-resource">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="news-card">
-                        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Sports" class="news-img">
-                        <div class="news-content">
-                            <span class="news-date"><i class="far fa-calendar me-2"></i>April 28, 2026</span>
-                            <h4>Regional Football Champions</h4>
-                            <p>Our school football team emerged victorious in the Bushenyi Regional Secondary Schools Championship, securing a place in nationals.</p>
-                            <a href="#" class="btn-resource">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="news-card">
-                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Graduation" class="news-img">
-                        <div class="news-content">
-                            <span class="news-date"><i class="far fa-calendar me-2"></i>April 10, 2026</span>
-                            <h4>2026 Admissions Now Open</h4>
-                            <p>Admissions for S.1, S.3, and S.5 for the 2026 academic year are now open. Entrance exams scheduled for June 2026.</p>
-                            <a href="#admissions" class="btn-resource">Apply Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-shape hero-shape-1"></div>
+    <div class="hero-shape hero-shape-2"></div>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery-section section-padding">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-lg-10 mx-auto text-center">
-                    <h2 class="section-title">Campus Life Gallery</h2>
-                    <p class="section-subtitle">Experience the vibrant campus life at Bishop Ogez High School</p>
-                </div>
-            </div>
-            
-            <div class="row g-3">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Campus" class="gallery-img">
-                        <div class="gallery-overlay">
-                            <h5 class="text-white">Main Campus</h5>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Library" class="gallery-img">
-                        <div class="gallery-overlay">
-                            <h5 class="text-white">School Library</h5>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Sports" class="gallery-img">
-                        <div class="gallery-overlay">
-                            <h5 class="text-white">Sports Day</h5>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Classroom" class="gallery-img">
-                        <div class="gallery-overlay">
-                            <h5 class="text-white">Modern Classroom</h5>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Laboratory" class="gallery-img">
-                        <div class="gallery-overlay">
-                            <h5 class="text-white">Science Lab</h5>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Dormitory" class="gallery-img">
-                        <div class="gallery-overlay">
-                            <h5 class="text-white">Student Dormitories</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="container hero-content">
+      <div class="row align-items-center">
+        <div class="col-lg-7" data-aos="fade-right">
+          <span class="section-badge">Welcome to Bishop Ogez High School</span>
+          <h1>Nurturing <span class="hero-highlight">Academic Excellence</span> & Moral Character</h1>
+          <p>A premier secondary school in Bushenyi, Uganda, dedicated to moulding future leaders through quality education, discipline, and holistic development since 1975.</p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#programs" class="btn btn-accent">Explore Programs</a>
+            <a href="#about" class="btn btn-outline-light">Learn More</a>
+          </div>
 
-    <!-- Results Section -->
-    <section id="results" class="results-section section-padding">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-lg-10 mx-auto text-center">
-                    <h2 class="section-title">UNEB Examination Performance</h2>
-                    <p class="section-subtitle">Consistent outstanding performance in national examinations</p>
-                </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <h3 data-count="1200" data-suffix="+">0</h3>
+              <span>Students</span>
             </div>
-            
-            <div class="row">
-                <div class="col-lg-8 mx-auto" data-aos="fade-up">
-                    <div class="results-card">
-                        <h3 class="text-center mb-5">2022 UNEB Results Breakdown</h3>
-                        
-                        <div class="progress-container">
-                            <div class="progress-label">
-                                <span>Division 1</span>
-                                <span>45%</span>
-                            </div>
-                            <div class="progress-bar-custom">
-                                <div class="progress-fill" style="width: 45%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="progress-container">
-                            <div class="progress-label">
-                                <span>Division 2</span>
-                                <span>40%</span>
-                            </div>
-                            <div class="progress-bar-custom">
-                                <div class="progress-fill" style="width: 40%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="progress-container">
-                            <div class="progress-label">
-                                <span>Division 3</span>
-                                <span>13%</span>
-                            </div>
-                            <div class="progress-bar-custom">
-                                <div class="progress-fill" style="width: 13%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="progress-container">
-                            <div class="progress-label">
-                                <span>Division 4</span>
-                                <span>2%</span>
-                            </div>
-                            <div class="progress-bar-custom">
-                                <div class="progress-fill" style="width: 2%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="text-center mt-5 pt-4">
-                            <h4 class="mb-3">Overall Pass Rate: 98%</h4>
-                            <p class="text-muted">Our students consistently perform above the national average, with many qualifying for prestigious universities both locally and internationally.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="hero-stat">
+              <h3 data-count="85" data-suffix="+">0</h3>
+              <span>Teachers</span>
             </div>
+            <div class="hero-stat">
+              <h3 data-count="50" data-suffix="+">0</h3>
+              <span>Years</span>
+            </div>
+            <div class="hero-stat">
+              <h3 data-count="95" data-suffix="%">0</h3>
+              <span>Pass Rate</span>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Events Section -->
-    <section id="events" class="events-section section-padding">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-lg-10 mx-auto text-center">
-                    <h2 class="section-title">Upcoming School Events</h2>
-                    <p class="section-subtitle">Mark your calendar for important school events and activities</p>
-                </div>
+  <!-- ========== ABOUT ========== -->
+  <section class="section-padding" id="about">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="about-img-wrap">
+            <img src="images/hero-bg.png" alt="Bishop Ogez High School Campus" />
+            <div class="about-accent-box">
+              <h3>50+</h3>
+              <span>Years of Excellence</span>
             </div>
-            
-            <div class="event-timeline">
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-date">
-                        <div class="month">June</div>
-                        <div class="day">20</div>
-                    </div>
-                    <div class="timeline-content">
-                        <h4>Annual Parents' Day</h4>
-                        <p class="text-muted mb-2">9:00 AM - 2:00 PM | School Auditorium</p>
-                        <p>Parents are invited to meet teachers, discuss student progress, and tour the newly upgraded school facilities.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
-                    <div class="timeline-date">
-                        <div class="month">July</div>
-                        <div class="day">05</div>
-                    </div>
-                    <div class="timeline-content">
-                        <h4>Cultural Day Festival</h4>
-                        <p class="text-muted mb-2">8:00 AM - 5:00 PM | School Grounds</p>
-                        <p>Experience Uganda's rich cultural diversity through traditional dances, food, music, and costumes presented by students.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
-                    <div class="timeline-date">
-                        <div class="month">Aug</div>
-                        <div class="day">15</div>
-                    </div>
-                    <div class="timeline-content">
-                        <h4>Science Fair Exhibition</h4>
-                        <p class="text-muted mb-2">August 15-17 | Science Block</p>
-                        <p>Annual science fair showcasing innovative projects from students. Open to the public and neighboring schools.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
-                    <div class="timeline-date">
-                        <div class="month">Jan</div>
-                        <div class="day">29</div>
-                    </div>
-                    <div class="timeline-content">
-                        <h4>2024 Academic Year Begins</h4>
-                        <p class="text-muted mb-2">8:00 AM | School Campus</p>
-                        <p>First day of the 2026 academic year for all returning students. New S.1 students report on 10 Feb 26, 2026.</p>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Resources Section -->
-    <section id="resources" class="resources-section">
-        <div class="container">
-            <div class="resources-header">
-                <h1 class="mb-4">School Resources & Publications</h1>
-                <p class="lead">Access our digital library, school magazine, academic resources, and more</p>
+        <div class="col-lg-6" data-aos="fade-left">
+          <span class="section-badge">About Our School</span>
+          <h2 class="section-title">Building the Leaders of <span class="accent-text">Tomorrow</span></h2>
+          <p class="about-text">
+            Bishop Ogez High School, nestled in the scenic hills of Bushenyi, Western Uganda, has been a beacon of academic excellence since 1975. Founded on strong Christian values, our school combines rigorous academics with character formation to produce well-rounded graduates.
+          </p>
+          <p class="about-text">
+            We offer both Ordinary and Advanced level education with streams in Sciences, Arts, and a robust co-curricular program that develops the whole student — mind, body, and spirit.
+          </p>
+          <div class="about-features">
+            <div class="about-feature">
+              <i class="bi bi-check-lg"></i>
+              <span>Qualified Teachers</span>
             </div>
-            
-            <div class="row">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                    <div class="resource-card">
-                        <div class="resource-icon">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <div class="resource-content">
-                            <h4>School Magazine</h4>
-                            <div class="resource-meta">Quarterly Publication</div>
-                            <p>Read our latest school magazine featuring student articles, interviews, creative writing, and school news.</p>
-                            <a href="#" class="btn-resource">Read Latest Issue</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="resource-card">
-                        <div class="resource-icon">
-                            <i class="fas fa-download"></i>
-                        </div>
-                        <div class="resource-content">
-                            <h4>Academic Resources</h4>
-                            <div class="resource-meta">Study Materials & Past Papers</div>
-                            <p>Access past UNEB papers, study guides, syllabi, and other academic resources for students.</p>
-                            <a href="#" class="btn-resource">Download Resources</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="resource-card">
-                        <div class="resource-icon">
-                            <i class="fas fa-newspaper"></i>
-                        </div>
-                        <div class="resource-content">
-                            <h4>School Newsletter</h4>
-                            <div class="resource-meta">Monthly Updates</div>
-                            <p>Subscribe to our monthly newsletter for updates on school events, achievements, and important announcements.</p>
-                            <a href="#" class="btn-resource">Subscribe Now</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                    <div class="resource-card">
-                        <div class="resource-icon">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                        <div class="resource-content">
-                            <h4>Academic Calendar</h4>
-                            <div class="resource-meta">2026-2027 Schedule</div>
-                            <p>View and download the complete academic calendar including term dates, holidays, and examination schedules.</p>
-                            <a href="#" class="btn-resource">View Calendar</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="resource-card">
-                        <div class="resource-icon">
-                            <i class="fas fa-file-pdf"></i>
-                        </div>
-                        <div class="resource-content">
-                            <h4>School Prospectus</h4>
-                            <div class="resource-meta">Official School Document</div>
-                            <p>Download our detailed school prospectus containing information about programs, facilities, and admission procedures.</p>
-                            <a href="#" class="btn-resource">Download PDF</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="resource-card">
-                        <div class="resource-icon">
-                            <i class="fas fa-video"></i>
-                        </div>
-                        <div class="resource-content">
-                            <h4>Virtual Tour</h4>
-                            <div class="resource-meta">Interactive Campus Tour</div>
-                            <p>Take a virtual tour of our campus facilities including classrooms, laboratories, library, and sports facilities.</p>
-                            <a href="#" class="btn-resource">Start Tour</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="about-feature">
+              <i class="bi bi-check-lg"></i>
+              <span>Modern Laboratories</span>
             </div>
-            
-            <!-- Magazine Preview -->
-            <div class="magazine-preview" data-aos="fade-up">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 text-center">
-                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Magazine Cover" class="magazine-cover">
-                    </div>
-                    <div class="col-lg-8">
-                        <h3 class="mb-3">The Ogez Chronicle - Spring 2025 Edition</h3>
-                        <p class="mb-4">Our latest school magazine features award-winning student essays, interviews with alumni, highlights from the science fair, and a special feature on our new laboratory complex.</p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="mb-4">
-                                    <li>Exclusive interview with Headteacher</li>
-                                    <li>Student creative writing showcase</li>
-                                    <li>Sports achievements highlights</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul class="mb-4">
-                                    <li>Science & technology features</li>
-                                    <li>Alumni success stories</li>
-                                    <li>Upcoming events calendar</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <a href="#" class="btn btn-primary-gold me-3"><i class="fas fa-book-open me-2"></i>Read Online</a>
-                        <a href="#" class="btn-resource"><i class="fas fa-download me-2"></i>Download PDF</a>
-                    </div>
-                </div>
+            <div class="about-feature">
+              <i class="bi bi-check-lg"></i>
+              <span>Library & ICT Center</span>
             </div>
+            <div class="about-feature">
+              <i class="bi bi-check-lg"></i>
+              <span>Sports Facilities</span>
+            </div>
+            <div class="about-feature">
+              <i class="bi bi-check-lg"></i>
+              <span>Boarding & Day</span>
+            </div>
+            <div class="about-feature">
+              <i class="bi bi-check-lg"></i>
+              <span>Holistic Growth</span>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Admissions Section -->
-    <section id="admissions" class="admissions-section section-padding">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-lg-10 mx-auto text-center">
-                    <h2 class="section-title" style="color: white;">Admissions for 2026 Academic Year</h2>
-                    <p class="lead mb-5" style="color: rgba(255, 255, 255, 0.9);">Join the Bishop Ogez High School family. Limited spaces available for S.1, S.3, and S.5.</p>
-                </div>
+  <!-- ========== PROGRAMS / ACADEMICS ========== -->
+  <section class="section-padding bg-light-custom" id="programs">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-badge">Our Programs</span>
+        <h2 class="section-title">Academic <span class="accent-text">Programs</span></h2>
+        <p class="section-subtitle mx-auto">Comprehensive curriculum designed to prepare students for success at national examinations and beyond.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Sciences -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+          <div class="program-card">
+            <div class="program-card-img">
+              <img src="images/science.png" alt="Science Program" />
+              <div class="program-icon"><i class="bi bi-rocket-takeoff"></i></div>
             </div>
-            
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="admissions-card" data-aos="fade-up">
-                        <h3 class="text-center mb-5">Admission Inquiry Form</h3>
-                        <form id="admissionForm">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Student's Full Name" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Parent/Guardian Name" required>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" placeholder="Email Address" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="tel" class="form-control" placeholder="Phone Number" required>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <select class="form-control" required>
-                                        <option value="">Select Class Applying For</option>
-                                        <option value="S1">Senior 1 (S.1)</option>
-                                        <option value="S3">Senior 3 (S.3)</option>
-                                        <option value="S5">Senior 5 (S.5)</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <select class="form-control" required>
-                                        <option value="">Current School</option>
-                                        <option value="Primary">Primary School</option>
-                                        <option value="Secondary">Secondary School</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <textarea class="form-control" rows="4" placeholder="Additional Information or Questions"></textarea>
-                            
-                            <div class="text-center mt-5">
-                                <button type="submit" class="btn btn-primary-gold px-5">Submit Application</button>
-                            </div>
-                        </form>
-                        
-                        <div class="mt-5 pt-4 border-top text-center">
-                            <h5 class="mb-3">Admissions Process</h5>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <div class="feature-icon" style="width: 50px; height: 50px; margin: 0 auto 15px;">
-                                            <i class="fas fa-file-alt"></i>
-                                        </div>
-                                        <p>Submit Application</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <div class="feature-icon" style="width: 50px; height: 50px; margin: 0 auto 15px;">
-                                            <i class="fas fa-pen-alt"></i>
-                                        </div>
-                                        <p>Entrance Examination</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <div class="feature-icon" style="width: 50px; height: 50px; margin: 0 auto 15px;">
-                                            <i class="fas fa-handshake"></i>
-                                        </div>
-                                        <p>Interview & Admission</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="program-card-body">
+              <h5>Sciences</h5>
+              <p>Physics, Chemistry, Biology, and Mathematics with hands-on laboratory experience and field research.</p>
             </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-5">
-                    <div class="footer-logo">
-                        <div class="school-logo">B</div>
-                        Bishop Ogez High
-                    </div>
-                    <p class="mb-4" style="color: rgba(255, 255, 255, 0.8);">Providing quality education since 1985. Shaping future leaders through academic excellence, moral values, and holistic development.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-2 col-md-4 mb-5">
-                    <div class="footer-links">
-                        <h5>Quick Links</h5>
-                        <a href="#home">Home</a>
-                        <a href="#about">About Us</a>
-                        <a href="#news">News</a>
-                        <a href="#gallery">Gallery</a>
-                        <a href="#results">Results</a>
-                        <a href="#events">Events</a>
-                        <a href="#resources">Resources</a>
-                        <a href="#admissions">Admissions</a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-4 mb-5">
-                    <div class="footer-links">
-                        <h5>Resources</h5>
-                        <a href="#">School Magazine</a>
-                        <a href="#">Academic Calendar</a>
-                        <a href="#">Past Papers</a>
-                        <a href="#">School Prospectus</a>
-                        <a href="#">Virtual Tour</a>
-                        <a href="#">Newsletter</a>
-                        <a href="#">Parent Portal</a>
-                        <a href="#">Staff Directory</a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-4 mb-5">
-                    <div class="footer-links">
-                        <h5>Contact Us</h5>
-                        <p><i class="fas fa-map-marker-alt me-2"></i> Bushenyi Town, Bushenyi District, Uganda</p>
-                        <p><i class="fas fa-phone me-2"></i> +256 772 123 456</p>
-                        <p><i class="fas fa-envelope me-2"></i> info@bishopogez.ac.ug</p>
-                        <p><i class="fas fa-clock me-2"></i> Mon-Fri, 8:00 AM - 5:00 PM</p>
-                    </div>
-                </div>
+        <!-- Arts -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="program-card">
+            <div class="program-card-img">
+              <img src="images/hero-bg.png" alt="Arts Program" />
+              <div class="program-icon"><i class="bi bi-book"></i></div>
             </div>
-            
-            <div class="copyright">
-                <p>&copy; 2026 Bishop Ogez High School, Bushenyi. All Rights Reserved.</p>
-                <p class="small mt-2">This professional website demonstrates the value of a strong online presence for school administration, communication, and student recruitment.</p>
+            <div class="program-card-body">
+              <h5>Arts & Humanities</h5>
+              <p>History, Geography, Literature, Economics, and Divinity for a thorough humanities education.</p>
             </div>
+          </div>
         </div>
-    </footer>
-    
-    <!-- Floating Apply Now Button -->
-    <a href="#admissions" class="floating-button">
-        <i class="fas fa-user-graduate"></i>
-    </a>
+        <!-- Languages -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="program-card">
+            <div class="program-card-img">
+              <img src="images/hero-bg.png" alt="Languages Program" />
+              <div class="program-icon"><i class="bi bi-translate"></i></div>
+            </div>
+            <div class="program-card-body">
+              <h5>Languages</h5>
+              <p>English, Kiswahili, French and Literature — building strong communication skills for global citizenship.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Sports -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="program-card">
+            <div class="program-card-img">
+              <img src="images/sports.png" alt="Sports Program" />
+              <div class="program-icon"><i class="bi bi-trophy"></i></div>
+            </div>
+            <div class="program-card-body">
+              <h5>Sports & Co-curricular</h5>
+              <p>Football, athletics, debate, music, and drama — nurturing talents beyond the classroom.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS Library -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <script>
-        // Initialize AOS animations
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            // Navbar scroll effect
-            const navbar = document.querySelector('.navbar');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-            
-            // Animated counters
-            const counters = document.querySelectorAll('.stat-number');
-            const speed = 200;
-            
-            counters.forEach(counter => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-count');
-                    const count = +counter.innerText;
-                    
-                    const increment = target / speed;
-                    
-                    if(count < target) {
-                        counter.innerText = Math.ceil(count + increment);
-                        setTimeout(updateCount, 20);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                
-                // Start counting when element is in viewport
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            updateCount();
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.5 });
-                
-                observer.observe(counter);
-            });
-            
-            // Form submission
-            const admissionForm = document.getElementById('admissionForm');
-            if(admissionForm) {
-                admissionForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Show success message
-                    const submitBtn = admissionForm.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.innerHTML;
-                    
-                    submitBtn.innerHTML = '<i class="fas fa-check me-2"></i>Application Submitted!';
-                    submitBtn.disabled = true;
-                    submitBtn.style.backgroundColor = '#2e8b57';
-                    
-                    setTimeout(() => {
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                        submitBtn.style.backgroundColor = '';
-                        admissionForm.reset();
-                        
-                        // Show success alert
-                        alert('Thank you for your application! Our admissions team will contact you within 48 hours.');
-                    }, 2000);
-                });
-            }
-            
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if(targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if(targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Update active nav link
-                        document.querySelectorAll('.nav-link').forEach(link => {
-                            link.classList.remove('active');
-                        });
-                        this.classList.add('active');
-                    }
-                });
-            });
-            
-            // Update active nav link on scroll
-            const sections = document.querySelectorAll('section');
-            window.addEventListener('scroll', function() {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if(scrollY >= (sectionTop - 150)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active');
-                    if(link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-        });
-    </script>
+  <!-- ========== STATS BAR ========== -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="row g-4 text-center">
+        <div class="col-6 col-lg-3" data-aos="fade-up">
+          <div class="stat-item">
+            <h3 data-count="1200" data-suffix="+">0</h3>
+            <p>Students Enrolled</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="stat-item">
+            <h3 data-count="85" data-suffix="+">0</h3>
+            <p>Qualified Staff</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="stat-item">
+            <h3 data-count="50" data-suffix="+">0</h3>
+            <p>Years of Service</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat-item">
+            <h3 data-count="15000" data-suffix="+">0</h3>
+            <p>Alumni Worldwide</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY CHOOSE US ========== -->
+  <section class="section-padding" id="features">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-badge">Why Choose Us</span>
+        <h2 class="section-title">The <span class="accent-text">Bishop Ogez</span> Advantage</h2>
+        <p class="section-subtitle mx-auto">What sets us apart as one of the finest secondary schools in Western Uganda.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="feature-card">
+            <div class="icon-wrap"><i class="bi bi-mortarboard"></i></div>
+            <h5>Qualified Educators</h5>
+            <p>Our team of experienced and dedicated teachers are committed to academic excellence and personal mentorship.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-card">
+            <div class="icon-wrap"><i class="bi bi-building"></i></div>
+            <h5>Modern Facilities</h5>
+            <p>State-of-the-art laboratories, a well-stocked library, ICT centre, and spacious classrooms.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-card">
+            <div class="icon-wrap"><i class="bi bi-shield-check"></i></div>
+            <h5>Discipline & Values</h5>
+            <p>Grounded in Christian values, we cultivate integrity, responsibility, and respect in every student.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-card">
+            <div class="icon-wrap"><i class="bi bi-graph-up-arrow"></i></div>
+            <h5>Academic Results</h5>
+            <p>Consistently high UNEB pass rates with distinctions in both O-Level and A-Level examinations.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="feature-card">
+            <div class="icon-wrap"><i class="bi bi-people"></i></div>
+            <h5>Holistic Development</h5>
+            <p>Sports, clubs, music, drama, and community service develop well-rounded future leaders.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+          <div class="feature-card">
+            <div class="icon-wrap"><i class="bi bi-house-heart"></i></div>
+            <h5>Boarding Excellence</h5>
+            <p>Safe, nurturing boarding facilities with balanced meals, medical care, and pastoral support.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NEWS & EVENTS ========== -->
+  <section class="section-padding bg-light-custom" id="news">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-badge">News & Events</span>
+        <h2 class="section-title">Latest <span class="accent-text">Updates</span></h2>
+        <p class="section-subtitle mx-auto">Stay informed about what's happening at Bishop Ogez High School.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="news-card">
+            <div class="news-card-body">
+              <div class="news-date"><i class="bi bi-calendar3"></i> March 15, 2026</div>
+              <h5>Term I Academic Report Day</h5>
+              <p>Parents and guardians are invited to collect Term I academic reports and meet with class teachers to discuss student progress.</p>
+              <a href="#" class="news-link">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="news-card">
+            <div class="news-card-body">
+              <div class="news-date"><i class="bi bi-calendar3"></i> February 28, 2026</div>
+              <h5>Inter-School Science Fair 2026</h5>
+              <p>Our students won first place in the Western Uganda Inter-School Science Fair with innovative projects in renewable energy.</p>
+              <a href="#" class="news-link">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="news-card">
+            <div class="news-card-body">
+              <div class="news-date"><i class="bi bi-calendar3"></i> January 20, 2026</div>
+              <h5>New ICT Laboratory Opened</h5>
+              <p>The school has officially opened a brand-new ICT laboratory equipped with 40 computers and high-speed internet access.</p>
+              <a href="#" class="news-link">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="section-padding" id="testimonials">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-badge">Testimonials</span>
+        <h2 class="section-title">What People <span class="accent-text">Say</span></h2>
+        <p class="section-subtitle mx-auto">Hear from our students, parents, and alumni about their Bishop Ogez experience.</p>
+      </div>
+
+      <div class="position-relative" data-aos="fade-up">
+        <div style="overflow:hidden; border-radius:var(--radius-lg);">
+          <div class="testimonials-track d-flex" style="transition:.5s ease; gap:20px;">
+
+            <div class="testimonial-card" style="min-width:calc(33.333% - 14px); flex-shrink:0;">
+              <i class="bi bi-quote quote-icon"></i>
+              <p>"Bishop Ogez gave me the foundation I needed to succeed at university. The teachers were like parents, always pushing us to do better."</p>
+              <div class="testimonial-author">
+                <div class="avatar">JM</div>
+                <div>
+                  <h6>John Mubangizi</h6>
+                  <span>Alumni, Class of 2018</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" style="min-width:calc(33.333% - 14px); flex-shrink:0;">
+              <i class="bi bi-quote quote-icon"></i>
+              <p>"The boarding facilities are excellent and the discipline instilled in my daughter has been remarkable. I highly recommend this school to every parent."</p>
+              <div class="testimonial-author">
+                <div class="avatar">AN</div>
+                <div>
+                  <h6>Agnes Natukunda</h6>
+                  <span>Parent</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" style="min-width:calc(33.333% - 14px); flex-shrink:0;">
+              <i class="bi bi-quote quote-icon"></i>
+              <p>"The science labs and ICT facilities here helped me discover my passion for engineering. I'm now pursuing my degree at Makerere University."</p>
+              <div class="testimonial-author">
+                <div class="avatar">DK</div>
+                <div>
+                  <h6>Diana Kyomuhendo</h6>
+                  <span>Alumni, Class of 2020</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" style="min-width:calc(33.333% - 14px); flex-shrink:0;">
+              <i class="bi bi-quote quote-icon"></i>
+              <p>"The co-curricular activities shaped my leadership skills. From debate club to football captain, Bishop Ogez prepared me for life."</p>
+              <div class="testimonial-author">
+                <div class="avatar">PT</div>
+                <div>
+                  <h6>Patrick Tumusiime</h6>
+                  <span>Alumni, Class of 2019</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" style="min-width:calc(33.333% - 14px); flex-shrink:0;">
+              <i class="bi bi-quote quote-icon"></i>
+              <p>"As a teacher here for 12 years, I've witnessed countless students transform into confident, disciplined young adults ready for the world."</p>
+              <div class="testimonial-author">
+                <div class="avatar">RB</div>
+                <div>
+                  <h6>Rose Birungi</h6>
+                  <span>Senior Teacher</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <div class="d-flex justify-content-center gap-3 mt-4">
+          <button class="testimonial-prev btn btn-outline-secondary rounded-circle" style="width:46px;height:46px;" aria-label="Previous">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <button class="testimonial-next btn btn-outline-secondary rounded-circle" style="width:46px;height:46px;" aria-label="Next">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA SECTION ========== -->
+  <section class="cta-section section-padding text-center" id="cta">
+    <div class="container" data-aos="zoom-in">
+      <span class="section-badge">Enroll Today</span>
+      <h2>Give Your Child the <span class="accent-text">Best Start</span></h2>
+      <p>Admissions are open for the 2026/2027 academic year. Join the Bishop Ogez family and invest in a future of excellence.</p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="#contact" class="btn btn-accent btn-lg">Apply Now</a>
+        <a href="#about" class="btn btn-outline-light btn-lg">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="row g-5">
+        <!-- Brand Column -->
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <img src="images/logo.png" alt="Logo" style="width:45px;height:45px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);" />
+            <h5 class="mb-0" style="padding-bottom:0;">Bishop Ogez High School</h5>
+          </div>
+          <p>A premier secondary school in Bushenyi, Western Uganda, committed to academic excellence, moral values, and holistic student development since 1975.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="#hero"><i class="bi bi-chevron-right"></i> Home</a></li>
+            <li><a href="about.html"><i class="bi bi-chevron-right"></i> About</a></li>
+            <li><a href="academics.html"><i class="bi bi-chevron-right"></i> Academics</a></li>
+            <li><a href="#features"><i class="bi bi-chevron-right"></i> Why Us</a></li>
+            <li><a href="news.html"><i class="bi bi-chevron-right"></i> News</a></li>
+          </ul>
+        </div>
+
+        <!-- Academics -->
+        <div class="col-lg-2 col-md-6">
+          <h5>Academics</h5>
+          <ul class="footer-links">
+            <li><a href="academics.html"><i class="bi bi-chevron-right"></i> Sciences</a></li>
+            <li><a href="academics.html"><i class="bi bi-chevron-right"></i> Arts</a></li>
+            <li><a href="academics.html"><i class="bi bi-chevron-right"></i> Languages</a></li>
+            <li><a href="academics.html"><i class="bi bi-chevron-right"></i> Sports</a></li>
+            <li><a href="academics.html"><i class="bi bi-chevron-right"></i> O-Level</a></li>
+            <li><a href="academics.html"><i class="bi bi-chevron-right"></i> A-Level</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-lg-4 col-md-6">
+          <h5>Contact Us</h5>
+          <ul class="footer-contact">
+            <li>
+              <i class="bi bi-geo-alt-fill"></i>
+              <span>P.O. Box 123, Bushenyi Town,<br/>Bushenyi District, Western Uganda</span>
+            </li>
+            <li>
+              <i class="bi bi-telephone-fill"></i>
+              <span>+256 700 123 456<br/>+256 770 987 654</span>
+            </li>
+            <li>
+              <i class="bi bi-envelope-fill"></i>
+              <span>info@bishopogezhigh.ac.ug</span>
+            </li>
+            <li>
+              <i class="bi bi-clock-fill"></i>
+              <span>Mon – Fri: 8:00 AM – 5:00 PM<br/>Sat: 9:00 AM – 1:00 PM</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Bishop Ogez High School, Bushenyi. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== BACK TO TOP ========== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="bi bi-chevron-up"></i>
+  </button>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
