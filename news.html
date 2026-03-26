@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News & Events — Bishop Ogez High School | Bushenyi, Uganda</title>
+    <meta name="description"
+        content="Stay up to date with the latest news, events, announcements, and achievements from Bishop Ogez High School in Bushenyi, Uganda." />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <style>
+        /* Page hero */
+        .page-hero {
+            position: relative;
+            padding: 160px 0 80px;
+            background: var(--primary);
+            overflow: hidden;
+        }
+
+        .page-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('images/sports.png') center/cover no-repeat;
+            filter: brightness(.3);
+        }
+
+        .page-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10, 31, 68, .9) 0%, rgba(10, 31, 68, .6) 100%);
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-hero h1 {
+            color: var(--white);
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .page-hero p {
+            color: rgba(255, 255, 255, .8);
+            font-size: 1.1rem;
+        }
+
+        .breadcrumb-item a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: rgba(255, 255, 255, .6);
+        }
+
+        .breadcrumb-item+.breadcrumb-item::before {
+            color: rgba(255, 255, 255, .4);
+        }
+
+        /* Filter pills */
+        .filter-pill {
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: .88rem;
+            cursor: pointer;
+            border: 2px solid var(--gray-200);
+            color: var(--gray-600);
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        .filter-pill.active,
+        .filter-pill:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Featured news card */
+        .news-featured {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: var(--transition);
+            border: 1px solid var(--gray-100);
+        }
+
+        .news-featured:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .news-featured .nf-img {
+            height: 260px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .news-featured .nf-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition);
+        }
+
+        .news-featured:hover .nf-img img {
+            transform: scale(1.07);
+        }
+
+        .news-featured .nf-body {
+            padding: 28px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: .75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+        }
+
+        .cat-academics {
+            background: rgba(10, 31, 68, .08);
+            color: var(--primary);
+        }
+
+        .cat-sports {
+            background: rgba(212, 165, 24, .12);
+            color: #8a6800;
+        }
+
+        .cat-achievement {
+            background: rgba(40, 167, 69, .1);
+            color: #166928;
+        }
+
+        .cat-event {
+            background: rgba(23, 162, 184, .1);
+            color: #0c697a;
+        }
+
+        .cat-announcement {
+            background: rgba(220, 53, 69, .1);
+            color: #8e1a24;
+        }
+
+        .news-featured .nf-body h4 {
+            font-size: 1.25rem;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .news-featured .nf-body p {
+            font-size: .93rem;
+            color: var(--gray-600);
+            flex: 1;
+            margin-bottom: 16px;
+        }
+
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: .82rem;
+            color: var(--gray-600);
+            margin-bottom: 16px;
+        }
+
+        .news-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .news-read-more {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: .9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+
+        .news-read-more:hover {
+            color: var(--accent);
+            gap: 10px;
+        }
+
+        /* Compact news list */
+        .news-list-item {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            border: 1px solid var(--gray-100);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            transition: var(--transition);
+            margin-bottom: 16px;
+        }
+
+        .news-list-item:hover {
+            border-left: 4px solid var(--accent);
+            transform: translateX(4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .news-list-date {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border-radius: 10px;
+            padding: 10px 14px;
+            text-align: center;
+            min-width: 60px;
+            flex-shrink: 0;
+        }
+
+        .news-list-date .day {
+            font-size: 1.4rem;
+            font-weight: 800;
+            line-height: 1;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .news-list-date .month {
+            font-size: .72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+        }
+
+        .news-list-content h6 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .news-list-content p {
+            font-size: .88rem;
+            color: var(--gray-600);
+            margin-bottom: 6px;
+        }
+
+        .news-list-content a {
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .news-list-content a:hover {
+            color: var(--primary);
+        }
+
+        /* Sidebar */
+        .sidebar-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-100);
+            margin-bottom: 28px;
+        }
+
+        .sidebar-card h5 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        /* Event item */
+        .event-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .event-item h6 {
+            font-size: .9rem;
+            margin-bottom: 2px;
+        }
+
+        .event-item span {
+            font-size: .78rem;
+            color: var(--gray-600);
+        }
+
+        /* Newsletter */
+        .newsletter-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            color: var(--white);
+        }
+
+        .newsletter-card h5 {
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .newsletter-card p {
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .78);
+            margin-bottom: 20px;
+        }
+
+        .newsletter-card .form-control {
+            border-radius: 10px;
+            border: none;
+            margin-bottom: 10px;
+            font-size: .9rem;
+        }
+
+        .newsletter-card .btn {
+            width: 100%;
+        }
+
+        /* Pagination */
+        .page-link {
+            color: var(--primary);
+            border-color: var(--gray-200);
+        }
+
+        .page-item.active .page-link {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-color: var(--primary);
+        }
+
+        .page-link:hover {
+            color: var(--primary);
+            background: var(--gray-100);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="preloader" id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top scrolled" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Logo" />
+                Bishop Ogez <span class="accent-text">High School</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="academics.html">Academics</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="news.html">News</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-accent" href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-bg"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="container page-hero-content">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-3">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">News & Events</li>
+                </ol>
+            </nav>
+            <span class="section-badge">Stay Informed</span>
+            <h1>News & <span class="accent-text">Events</span></h1>
+            <p>The latest news, achievements, announcements, and upcoming events from Bishop Ogez High School.</p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <section class="section-padding">
+        <div class="container">
+
+            <!-- Filter Pills -->
+            <div class="d-flex flex-wrap gap-2 mb-5" data-aos="fade-up">
+                <button class="filter-pill active">All</button>
+                <button class="filter-pill">Academic</button>
+                <button class="filter-pill">Sports</button>
+                <button class="filter-pill">Events</button>
+                <button class="filter-pill">Achievements</button>
+                <button class="filter-pill">Announcements</button>
+            </div>
+
+            <div class="row g-5">
+                <!-- News Grid -->
+                <div class="col-lg-8">
+
+                    <!-- Featured / Latest 3 -->
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-6" data-aos="fade-up">
+                            <div class="news-featured">
+                                <div class="nf-img">
+                                    <img src="images/about-hero.png" alt="Report Day" />
+                                </div>
+                                <div class="nf-body">
+                                    <span class="news-category cat-announcement"><i class="bi bi-megaphone"></i>
+                                        Announcement</span>
+                                    <h4>Term I Academic Report Day — March 2026</h4>
+                                    <div class="news-meta">
+                                        <span><i class="bi bi-calendar3"></i> March 15, 2026</span>
+                                        <span><i class="bi bi-person"></i> Administration</span>
+                                    </div>
+                                    <p>Parents and guardians are warmly invited to collect Term I academic reports and
+                                        consult with class teachers. The day will also feature a Parent-Teacher
+                                        Association meeting.</p>
+                                    <a href="#" class="news-read-more">Read More <i class="bi bi-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="news-featured">
+                                <div class="nf-img">
+                                    <img src="images/science.png" alt="Science Fair" />
+                                </div>
+                                <div class="nf-body">
+                                    <span class="news-category cat-achievement"><i class="bi bi-trophy"></i>
+                                        Achievement</span>
+                                    <h4>1st Place at Western Uganda Inter-School Science Fair</h4>
+                                    <div class="news-meta">
+                                        <span><i class="bi bi-calendar3"></i> February 28, 2026</span>
+                                        <span><i class="bi bi-person"></i> Academics</span>
+                                    </div>
+                                    <p>Our S.5 Science students clinched first place with a renewable energy project
+                                        that impressed judges from Makerere University. Congratulations to the team!</p>
+                                    <a href="#" class="news-read-more">Read More <i class="bi bi-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- News List -->
+                    <h4 class="mb-4" data-aos="fade-up">More Recent News</h4>
+
+                    <div data-aos="fade-up">
+                        <div class="news-list-item">
+                            <div class="news-list-date">
+                                <div class="day">20</div>
+                                <div class="month">Jan</div>
+                            </div>
+                            <div class="news-list-content">
+                                <h6>New ICT Laboratory Officially Opened</h6>
+                                <p>A modern 40-computer laboratory with high-speed fibre internet was inaugurated in the
+                                    presence of the District Education Officer and Board of Governors.</p>
+                                <a href="#">Read Full Story <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="news-list-item">
+                            <div class="news-list-date">
+                                <div class="day">15</div>
+                                <div class="month">Jan</div>
+                            </div>
+                            <div class="news-list-content">
+                                <h6>Outstanding 2025 UCE Results — 98% Pass Rate</h6>
+                                <p>We are thrilled to announce that our S.4 class of 2025 achieved a 98% pass rate with
+                                    42 students scoring Division 1 — the best results in the school's history.</p>
+                                <a href="#">Read Full Story <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="news-list-item">
+                            <div class="news-list-date">
+                                <div class="day">08</div>
+                                <div class="month">Jan</div>
+                            </div>
+                            <div class="news-list-content">
+                                <h6>Term I 2026 — Reporting Dates & Fee Structure</h6>
+                                <p>All students are expected to report on Monday, February 3rd, 2026. The updated fee
+                                    structure and requirements for Term I are now available at the school office.</p>
+                                <a href="#">Read Full Story <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="news-list-item">
+                            <div class="news-list-date">
+                                <div class="day">28</div>
+                                <div class="month">Nov</div>
+                            </div>
+                            <div class="news-list-content">
+                                <h6>Annual Sports Day & Prize Giving Ceremony 2025</h6>
+                                <p>The 2025 Sports Day attracted hundreds of parents and officials. House Nile emerged
+                                    overall champions while S.6 finalist Sarah Kyomuhendo won the Top Student Award.</p>
+                                <a href="#">Read Full Story <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="news-list-item">
+                            <div class="news-list-date">
+                                <div class="day">10</div>
+                                <div class="month">Nov</div>
+                            </div>
+                            <div class="news-list-content">
+                                <h6>Football Team Qualifies for National Schools Championship</h6>
+                                <p>The Bishop Ogez football team beat Mbarara High School 3-1 to qualify for the
+                                    national championship to be held in Kampala in January 2026.</p>
+                                <a href="#">Read Full Story <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="news-list-item">
+                            <div class="news-list-date">
+                                <div class="day">22</div>
+                                <div class="month">Oct</div>
+                            </div>
+                            <div class="news-list-content">
+                                <h6>Alumni Scholarship Programme Launched</h6>
+                                <p>The Bishop Ogez Alumni Association has launched a scholarship fund to support 10
+                                    student beneficiaries annually from disadvantaged backgrounds.</p>
+                                <a href="#">Read Full Story <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="news-list-item">
+                            <div class="news-list-date">
+                                <div class="day">05</div>
+                                <div class="month">Oct</div>
+                            </div>
+                            <div class="news-list-content">
+                                <h6>Debate Team Wins Regional Championship</h6>
+                                <p>Our debate team successfully defended their Western Region title at the UNSA
+                                    inter-school debate competition held at Ntare School, Mbarara.</p>
+                                <a href="#">Read Full Story <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="news-list-item">
+                            <div class="news-list-date">
+                                <div class="day">18</div>
+                                <div class="month">Aug</div>
+                            </div>
+                            <div class="news-list-content">
+                                <h6>Environmental Club Plants 500 Trees on Campus</h6>
+                                <p>Students from the Environmental Club partnered with the National Forestry Authority
+                                    to plant 500 trees across the school compound, promoting sustainability.</p>
+                                <a href="#">Read Full Story <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav aria-label="News pagination" class="mt-5" data-aos="fade-up">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4" data-aos="fade-left">
+
+                    <!-- Search -->
+                    <div class="sidebar-card">
+                        <h5>Search News</h5>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search articles..." />
+                            <button class="btn btn-accent" type="button"><i class="bi bi-search"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Events -->
+                    <div class="sidebar-card">
+                        <h5>Upcoming Events</h5>
+                        <div class="event-item">
+                            <div class="event-dot"></div>
+                            <div>
+                                <h6>Term I Report Day</h6>
+                                <span><i class="bi bi-calendar3 me-1"></i>March 15, 2026</span>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-dot"></div>
+                            <div>
+                                <h6>Mid-Term Examinations</h6>
+                                <span><i class="bi bi-calendar3 me-1"></i>March 16–20, 2026</span>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-dot"></div>
+                            <div>
+                                <h6>School Founding Day Celebration</h6>
+                                <span><i class="bi bi-calendar3 me-1"></i>April 12, 2026</span>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-dot"></div>
+                            <div>
+                                <h6>Parents' Day</h6>
+                                <span><i class="bi bi-calendar3 me-1"></i>May 3, 2026</span>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-dot"></div>
+                            <div>
+                                <h6>End of Term I Examinations</h6>
+                                <span><i class="bi bi-calendar3 me-1"></i>May 6–9, 2026</span>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-dot"></div>
+                            <div>
+                                <h6>National Football Championship</h6>
+                                <span><i class="bi bi-calendar3 me-1"></i>May 20–25, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="sidebar-card">
+                        <h5>Categories</h5>
+                        <div class="d-flex flex-column gap-2">
+                            <a href="#"
+                                class="d-flex justify-content-between align-items-center text-decoration-none py-2 border-bottom"
+                                style="color:var(--gray-800);transition:var(--transition);">
+                                <span><i class="bi bi-chevron-right me-2"
+                                        style="color:var(--accent);"></i>Academic</span>
+                                <span class="badge" style="background:var(--primary);border-radius:20px;">8</span>
+                            </a>
+                            <a href="#"
+                                class="d-flex justify-content-between align-items-center text-decoration-none py-2 border-bottom"
+                                style="color:var(--gray-800);">
+                                <span><i class="bi bi-chevron-right me-2" style="color:var(--accent);"></i>Sports</span>
+                                <span class="badge" style="background:var(--primary);border-radius:20px;">5</span>
+                            </a>
+                            <a href="#"
+                                class="d-flex justify-content-between align-items-center text-decoration-none py-2 border-bottom"
+                                style="color:var(--gray-800);">
+                                <span><i class="bi bi-chevron-right me-2" style="color:var(--accent);"></i>Events</span>
+                                <span class="badge" style="background:var(--primary);border-radius:20px;">6</span>
+                            </a>
+                            <a href="#"
+                                class="d-flex justify-content-between align-items-center text-decoration-none py-2 border-bottom"
+                                style="color:var(--gray-800);">
+                                <span><i class="bi bi-chevron-right me-2"
+                                        style="color:var(--accent);"></i>Achievements</span>
+                                <span class="badge" style="background:var(--primary);border-radius:20px;">12</span>
+                            </a>
+                            <a href="#"
+                                class="d-flex justify-content-between align-items-center text-decoration-none py-2"
+                                style="color:var(--gray-800);">
+                                <span><i class="bi bi-chevron-right me-2"
+                                        style="color:var(--accent);"></i>Announcements</span>
+                                <span class="badge" style="background:var(--primary);border-radius:20px;">9</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="newsletter-card">
+                        <h5>Stay Updated</h5>
+                        <p>Subscribe to our newsletter and never miss a school update again.</p>
+                        <input type="email" class="form-control mb-2" placeholder="Your email address" />
+                        <button class="btn btn-accent w-100">Subscribe <i class="bi bi-send ms-1"></i></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section section-padding text-center">
+        <div class="container" data-aos="zoom-in">
+            <span class="section-badge">Join Our Community</span>
+            <h2>Be Part of the <span class="accent-text">Bishop Ogez</span> Story</h2>
+            <p>Admissions open for 2026/2027. Enroll your child and let them create their own success story.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="index.html#contact" class="btn btn-accent btn-lg">Apply Now</a>
+                <a href="about.html" class="btn btn-outline-light btn-lg">Learn About Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <img src="images/logo.png" alt="Logo"
+                            style="width:45px;height:45px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);" />
+                        <h5 class="mb-0" style="padding-bottom:0;">Bishop Ogez High School</h5>
+                    </div>
+                    <p>A premier secondary school in Bushenyi, Western Uganda, committed to academic excellence and
+                        holistic student development since 1975.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="bi bi-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="bi bi-chevron-right"></i> About</a></li>
+                        <li><a href="academics.html"><i class="bi bi-chevron-right"></i> Academics</a></li>
+                        <li><a href="news.html"><i class="bi bi-chevron-right"></i> News</a></li>
+                        <li><a href="index.html#contact"><i class="bi bi-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>News</h5>
+                    <ul class="footer-links">
+                        <li><a href="news.html"><i class="bi bi-chevron-right"></i> Academic</a></li>
+                        <li><a href="news.html"><i class="bi bi-chevron-right"></i> Sports</a></li>
+                        <li><a href="news.html"><i class="bi bi-chevron-right"></i> Events</a></li>
+                        <li><a href="news.html"><i class="bi bi-chevron-right"></i> Achievements</a></li>
+                        <li><a href="news.html"><i class="bi bi-chevron-right"></i> Announcements</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-contact">
+                        <li><i class="bi bi-geo-alt-fill"></i><span>P.O. Box 123, Bushenyi Town,<br />Bushenyi District,
+                                Western Uganda</span></li>
+                        <li><i class="bi bi-telephone-fill"></i><span>+256 700 123 456<br />+256 770 987 654</span></li>
+                        <li><i class="bi bi-envelope-fill"></i><span>info@bishopogezhigh.ac.ug</span></li>
+                        <li><i class="bi bi-clock-fill"></i><span>Mon – Fri: 8:00 AM – 5:00 PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bishop Ogez High School, Bushenyi. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="bi bi-chevron-up"></i></button>
+
+    <!-- Filter pill JS -->
+    <script>
+        document.querySelectorAll('.filter-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

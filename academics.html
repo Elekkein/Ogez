@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academics — Bishop Ogez High School | Bushenyi, Uganda</title>
+    <meta name="description"
+        content="Explore the academic programs at Bishop Ogez High School — Sciences, Arts, Languages, and co-curricular activities for O-Level and A-Level students in Bushenyi, Uganda." />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <style>
+        /* Page hero */
+        .page-hero {
+            position: relative;
+            padding: 160px 0 80px;
+            background: var(--primary);
+            overflow: hidden;
+        }
+
+        .page-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('images/science.png') center/cover no-repeat;
+            filter: brightness(.3);
+        }
+
+        .page-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10, 31, 68, .9) 0%, rgba(10, 31, 68, .6) 100%);
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-hero h1 {
+            color: var(--white);
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .page-hero p {
+            color: rgba(255, 255, 255, .8);
+            font-size: 1.1rem;
+        }
+
+        .breadcrumb-item a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: rgba(255, 255, 255, .6);
+        }
+
+        .breadcrumb-item+.breadcrumb-item::before {
+            color: rgba(255, 255, 255, .4);
+        }
+
+        /* Level tab pills */
+        .level-pills {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .level-pill {
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: .95rem;
+            cursor: pointer;
+            border: 2px solid var(--gray-200);
+            color: var(--gray-600);
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        .level-pill.active,
+        .level-pill:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Subject card */
+        .subject-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-100);
+            border-left: 5px solid transparent;
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .subject-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+            border-left-color: var(--accent);
+        }
+
+        .subject-card .s-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(212, 165, 24, .12), rgba(240, 201, 64, .18));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 18px;
+            transition: var(--transition);
+        }
+
+        .subject-card:hover .s-icon {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--primary);
+        }
+
+        .subject-card h5 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .subject-card p {
+            font-size: .9rem;
+            color: var(--gray-600);
+            margin-bottom: 12px;
+        }
+
+        .subject-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .subject-tag {
+            background: var(--gray-100);
+            color: var(--primary);
+            font-size: .78rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* Assessment table */
+        .assessment-table th {
+            background: var(--primary);
+            color: var(--white);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+        }
+
+        .assessment-table tbody tr {
+            transition: var(--transition);
+        }
+
+        .assessment-table tbody tr:hover {
+            background: rgba(212, 165, 24, .06);
+        }
+
+        /* Timetable card */
+        .timetable-day {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 20px;
+            border: 1px solid var(--gray-100);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .timetable-day h6 {
+            color: var(--white);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: .9rem;
+            margin-bottom: 14px;
+        }
+
+        .timetable-slot {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--gray-100);
+            font-size: .88rem;
+        }
+
+        .timetable-slot:last-child {
+            border-bottom: none;
+        }
+
+        .timetable-slot .slot-time {
+            font-weight: 600;
+            color: var(--accent);
+            min-width: 70px;
+            font-size: .8rem;
+        }
+
+        /* Facility card */
+        .facility-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 24px;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-100);
+            transition: var(--transition);
+            margin-bottom: 20px;
+        }
+
+        .facility-item:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateX(6px);
+        }
+
+        .facility-item .f-icon {
+            width: 52px;
+            height: 52px;
+            flex-shrink: 0;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+
+        .facility-item h6 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .facility-item p {
+            font-size: .9rem;
+            color: var(--gray-600);
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="preloader" id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top scrolled" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Logo" />
+                Bishop Ogez <span class="accent-text">High School</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="academics.html">Academics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-accent" href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-bg"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="container page-hero-content">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-3">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Academics</li>
+                </ol>
+            </nav>
+            <span class="section-badge">Curriculum & Programs</span>
+            <h1>Our <span class="accent-text">Academic</span> Programs</h1>
+            <p>A rigorous, balanced curriculum designed to prepare students for national examinations and lifelong
+                success.</p>
+        </div>
+    </section>
+
+    <!-- CURRICULUM OVERVIEW -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-badge">Curriculum</span>
+                <h2 class="section-title">O-Level <span class="accent-text">&</span> A-Level Programs</h2>
+                <p class="section-subtitle mx-auto">We offer Uganda's national curriculum at both levels, preparing
+                    students for UNEB examinations with excellence.</p>
+            </div>
+
+            <!-- O-Level -->
+            <div class="mb-5" data-aos="fade-up">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <div
+                        style="width:8px;height:48px;background:linear-gradient(to bottom,var(--accent),var(--accent-light));border-radius:4px;">
+                    </div>
+                    <div>
+                        <h3 class="mb-0">Ordinary Level <span class="accent-text">(S.1 – S.4)</span></h3>
+                        <p class="mb-0 text-muted">Uganda Certificate of Education (UCE) — UNEB</p>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                        <div class="subject-card">
+                            <div class="s-icon"><i class="bi bi-rocket-takeoff"></i></div>
+                            <h5>Sciences</h5>
+                            <p>Core sciences forming the foundation for A-Level and university studies.</p>
+                            <div class="subject-list">
+                                <span class="subject-tag">Mathematics</span>
+                                <span class="subject-tag">Biology</span>
+                                <span class="subject-tag">Chemistry</span>
+                                <span class="subject-tag">Physics</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="subject-card">
+                            <div class="s-icon"><i class="bi bi-book"></i></div>
+                            <h5>Humanities</h5>
+                            <p>Social sciences providing understanding of history, society, and economics.</p>
+                            <div class="subject-list">
+                                <span class="subject-tag">History</span>
+                                <span class="subject-tag">Geography</span>
+                                <span class="subject-tag">Commerce</span>
+                                <span class="subject-tag">Divinity</span>
+                                <span class="subject-tag">Economics</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="subject-card">
+                            <div class="s-icon"><i class="bi bi-translate"></i></div>
+                            <h5>Languages & Arts</h5>
+                            <p>Building strong communication and expression for global readiness.</p>
+                            <div class="subject-list">
+                                <span class="subject-tag">English</span>
+                                <span class="subject-tag">Kiswahili</span>
+                                <span class="subject-tag">Literature</span>
+                                <span class="subject-tag">French</span>
+                                <span class="subject-tag">Fine Art</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A-Level -->
+            <div data-aos="fade-up">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <div
+                        style="width:8px;height:48px;background:linear-gradient(to bottom,var(--primary),var(--primary-light));border-radius:4px;">
+                    </div>
+                    <div>
+                        <h3 class="mb-0">Advanced Level <span class="accent-text">(S.5 – S.6)</span></h3>
+                        <p class="mb-0 text-muted">Uganda Advanced Certificate of Education (UACE) — UNEB</p>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                        <div class="subject-card">
+                            <div class="s-icon"><i class="bi bi-flask"></i></div>
+                            <h5>Sciences Combination</h5>
+                            <p>Designed for students pursuing Medicine, Engineering, and Science degrees.</p>
+                            <div class="subject-list">
+                                <span class="subject-tag">Physics</span>
+                                <span class="subject-tag">Chemistry</span>
+                                <span class="subject-tag">Biology</span>
+                                <span class="subject-tag">Mathematics</span>
+                                <span class="subject-tag">Subsidiary ICT</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="subject-card">
+                            <div class="s-icon"><i class="bi bi-bank"></i></div>
+                            <h5>Arts & Business</h5>
+                            <p>For students heading into Law, Social Sciences, Business, and Public Administration.</p>
+                            <div class="subject-list">
+                                <span class="subject-tag">Economics</span>
+                                <span class="subject-tag">History</span>
+                                <span class="subject-tag">Geography</span>
+                                <span class="subject-tag">Entrepreneurship</span>
+                                <span class="subject-tag">Subsidiary Math</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="subject-card">
+                            <div class="s-icon"><i class="bi bi-pen"></i></div>
+                            <h5>Arts Combination</h5>
+                            <p>For students pursuing Teaching, Journalism, Literature, and Theology.</p>
+                            <div class="subject-list">
+                                <span class="subject-tag">Literature in English</span>
+                                <span class="subject-tag">Divinity</span>
+                                <span class="subject-tag">History</span>
+                                <span class="subject-tag">French</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACADEMIC CALENDAR -->
+    <section class="section-padding bg-light-custom">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-badge">Schedule</span>
+                <h2 class="section-title">Academic <span class="accent-text">Calendar 2026</span></h2>
+                <p class="section-subtitle mx-auto">Key dates for the 2026 academic year at Bishop Ogez High School.</p>
+            </div>
+            <div class="row g-4" data-aos="fade-up">
+                <div class="col-lg-4">
+                    <div class="timetable-day">
+                        <h6><i class="bi bi-calendar3 me-2"></i>Term I — February to May</h6>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Feb 3</span>
+                            <span>Reporting day — All students</span>
+                        </div>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Feb 5</span>
+                            <span>Term I lessons begin</span>
+                        </div>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Mar 15</span>
+                            <span>Mid-term examinations</span>
+                        </div>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Mar 18–21</span>
+                            <span>Mid-term break</span>
+                        </div>
+                        <div class="timetable-slot">
+                            <span class="slot-time">May 6</span>
+                            <span>Term I end-of-term exams</span>
+                        </div>
+                        <div class="timetable-slot">
+                            <span class="slot-time">May 22</span>
+                            <span>Students close</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="timetable-day">
+                        <h6><i class="bi bi-calendar3 me-2"></i>Term II — June to September</h6>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Jun 2</span>
+                            <span>Reporting day</span>
+                        </div>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Jun 4</span>
+                            <span>Term II lessons begin</span>
+                        </div>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Jul 17</span>
+                            <span>Mid-term examinations</span>
+                        </div>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Jul 20–24</span>
+                            <span>Mid-term break</span>
+                        </div>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Sep 8</span>
+                            <span>End-of-term examinations</span>
+                        </div>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Sep 26</span>
+                            <span>Students close</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="timetable-day">
+                        <h6><i class="bi bi-calendar3 me-2"></i>Term III — October to December</h6>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Oct 6</span>
+                            <span>Reporting day</span>
+                        </div>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Oct 8</span>
+                            <span>Term III lessons begin</span>
+                        </div>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Oct–Nov</span>
+                            <span>UNEB S.4 & S.6 examinations</span>
+                        </div>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Nov 14</span>
+                            <span>Mid-term break</span>
+                        </div>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Nov 27</span>
+                            <span>Prize Giving Day</span>
+                        </div>
+                        <div class="timetable-slot">
+                            <span class="slot-time">Dec 5</span>
+                            <span>Students close for the year</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FACILITIES -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <span class="section-badge">Infrastructure</span>
+                    <h2 class="section-title">World-Class <span class="accent-text">Facilities</span></h2>
+                    <p style="color:var(--gray-600);font-size:1rem;line-height:1.85;margin-bottom:28px;">
+                        Our campus is equipped with modern infrastructure designed to support comprehensive learning and
+                        discovery.
+                    </p>
+
+                    <div class="facility-item">
+                        <div class="f-icon"><i class="bi bi-flask"></i></div>
+                        <div>
+                            <h6>Science Laboratories</h6>
+                            <p>Fully equipped Physics, Chemistry, and Biology labs with modern apparatus for practical
+                                learning.</p>
+                        </div>
+                    </div>
+                    <div class="facility-item">
+                        <div class="f-icon"><i class="bi bi-laptop"></i></div>
+                        <div>
+                            <h6>ICT Laboratory</h6>
+                            <p>40-computer lab with high-speed fibre internet, used for ICT lessons, research, and
+                                e-learning.</p>
+                        </div>
+                    </div>
+                    <div class="facility-item">
+                        <div class="f-icon"><i class="bi bi-journal-bookmark"></i></div>
+                        <div>
+                            <h6>School Library</h6>
+                            <p>Over 8,000 titles across all subjects, with a dedicated reading room and digital
+                                resources.</p>
+                        </div>
+                    </div>
+                    <div class="facility-item">
+                        <div class="f-icon"><i class="bi bi-easel"></i></div>
+                        <div>
+                            <h6>Smart Classrooms</h6>
+                            <p>Spacious, well-ventilated classrooms with smart boards enabling interactive, engaging
+                                lessons.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <img src="images/science.png" alt="Science Laboratory" class="w-100 rounded-4 shadow"
+                        style="height:480px;object-fit:cover;" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASSESSMENT / GRADING -->
+    <section class="section-padding bg-light-custom">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-badge">Assessment</span>
+                <h2 class="section-title">Grading & <span class="accent-text">Assessment</span></h2>
+                <p class="section-subtitle mx-auto">We follow the Uganda National Examinations Board (UNEB) grading
+                    system for O-Level and A-Level.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <h5 class="mb-3">O-Level (UCE) Grading</h5>
+                    <div class="table-responsive">
+                        <table class="table assessment-table rounded-3 overflow-hidden">
+                            <thead>
+                                <tr>
+                                    <th>Grade</th>
+                                    <th>Marks (%)</th>
+                                    <th>Meaning</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>D1</strong></td>
+                                    <td>80 – 100</td>
+                                    <td>Distinction 1</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>D2</strong></td>
+                                    <td>75 – 79</td>
+                                    <td>Distinction 2</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>C3</strong></td>
+                                    <td>70 – 74</td>
+                                    <td>Credit 3</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>C4</strong></td>
+                                    <td>65 – 69</td>
+                                    <td>Credit 4</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>C5</strong></td>
+                                    <td>60 – 64</td>
+                                    <td>Credit 5</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>C6</strong></td>
+                                    <td>55 – 59</td>
+                                    <td>Credit 6</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>P7</strong></td>
+                                    <td>45 – 54</td>
+                                    <td>Pass</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>P8</strong></td>
+                                    <td>35 – 44</td>
+                                    <td>Pass</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>F9</strong></td>
+                                    <td>0 – 34</td>
+                                    <td>Fail</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-5" data-aos="fade-left">
+                    <h5 class="mb-3">A-Level (UACE) Grading</h5>
+                    <div class="table-responsive">
+                        <table class="table assessment-table rounded-3 overflow-hidden">
+                            <thead>
+                                <tr>
+                                    <th>Grade</th>
+                                    <th>Marks (%)</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>A</strong></td>
+                                    <td>80 – 100</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>B</strong></td>
+                                    <td>70 – 79</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>C</strong></td>
+                                    <td>60 – 69</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>D</strong></td>
+                                    <td>50 – 59</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>E</strong></td>
+                                    <td>40 – 49</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>O</strong></td>
+                                    <td>30 – 39</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>F</strong></td>
+                                    <td>0 – 29</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section section-padding text-center">
+        <div class="container" data-aos="zoom-in">
+            <span class="section-badge">Enroll Today</span>
+            <h2>Ready to Join the <span class="accent-text">Class of 2026?</span></h2>
+            <p>Applications are open. Join hundreds of students pursuing academic excellence at Bishop Ogez High School.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="index.html#contact" class="btn btn-accent btn-lg">Apply Now</a>
+                <a href="about.html" class="btn btn-outline-light btn-lg">About Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <img src="images/logo.png" alt="Logo"
+                            style="width:45px;height:45px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);" />
+                        <h5 class="mb-0" style="padding-bottom:0;">Bishop Ogez High School</h5>
+                    </div>
+                    <p>A premier secondary school in Bushenyi, Western Uganda, committed to academic excellence and
+                        holistic student development since 1975.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="bi bi-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="bi bi-chevron-right"></i> About</a></li>
+                        <li><a href="academics.html"><i class="bi bi-chevron-right"></i> Academics</a></li>
+                        <li><a href="news.html"><i class="bi bi-chevron-right"></i> News</a></li>
+                        <li><a href="index.html#contact"><i class="bi bi-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Academics</h5>
+                    <ul class="footer-links">
+                        <li><a href="academics.html"><i class="bi bi-chevron-right"></i> O-Level</a></li>
+                        <li><a href="academics.html"><i class="bi bi-chevron-right"></i> A-Level</a></li>
+                        <li><a href="academics.html"><i class="bi bi-chevron-right"></i> Sciences</a></li>
+                        <li><a href="academics.html"><i class="bi bi-chevron-right"></i> Arts</a></li>
+                        <li><a href="academics.html"><i class="bi bi-chevron-right"></i> Library</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-contact">
+                        <li><i class="bi bi-geo-alt-fill"></i><span>P.O. Box 123, Bushenyi Town,<br />Bushenyi District,
+                                Western Uganda</span></li>
+                        <li><i class="bi bi-telephone-fill"></i><span>+256 700 123 456</span></li>
+                        <li><i class="bi bi-envelope-fill"></i><span>info@bishopogezhigh.ac.ug</span></li>
+                        <li><i class="bi bi-clock-fill"></i><span>Mon – Fri: 8:00 AM – 5:00 PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bishop Ogez High School, Bushenyi. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="bi bi-chevron-up"></i></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
